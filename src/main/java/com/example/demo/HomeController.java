@@ -36,16 +36,6 @@ public class HomeController {
 		return m_dao.Login(m, session);
 	}
 
-	// body의 값을 매핑하는 용도
-	@ResponseBody
-	// POST로 /register 페이지로 요청을 할 경우
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	// 메소드 이름이 register 매게변수는 member 자료형의 변수명은 m
-	public int register(member m) {
-		// m_dao.Register(m)의 값을 반환한다.
-		return m_dao.Register(m);
-	}
-
 	// GET으로 /index페이지에 요청을 할 때
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {

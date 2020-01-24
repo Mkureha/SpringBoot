@@ -9,9 +9,9 @@
 </head>
 <body>
 	<h3>## LOGIN PAGE ##</h3>
-	<input type="text" id="m_id" placeholder="ID">
+	<input type="text" id="userId" placeholder="ID">
 	<br>
-	<input type="password" id="m_pw" placeholder="PASSWORD">
+	<input type="password" id="password" placeholder="PASSWORD">
 	<br>
 	<button id="login_process">LOGIN</button>
 
@@ -24,8 +24,8 @@
                 //json 객체를 생성
                 var json = {
                     //m_id의 이름을 가지고 m_id의 id를 가지는 태그의 벨류값을 가져옴 아래도 동일
-                    m_id : $("#m_id").val(),
-                    m_pw : $("#m_pw").val()
+                    userId : $("#userId").val(),
+                    password : $("#password").val()
                 };
                 //json을 포이치문 돌림
                 for(var str in json){
