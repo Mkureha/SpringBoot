@@ -16,7 +16,12 @@ public class MemberController {
 	@Resource(name = "com.example.demo.sys.service.MemberService")
 	MemberService mMemberService;
 
-	@RequestMapping("/login")
+	@RequestMapping("/login") // 도서등록폼호출
+	private String MemberLoginForm() {
+		return "login";
+	}
+	
+	@RequestMapping("/loginProc")
 	private String MemberLoginProc(HttpServletRequest request) throws Exception {
 
 		MemberVO member = new MemberVO();
@@ -26,7 +31,7 @@ public class MemberController {
 
 		mMemberService.MemberLoginService(member);
 
-		return "login";
+		return "redirect:/login";
 	}
 
 }

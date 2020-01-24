@@ -10,7 +10,7 @@
 	<h1>図書管理ログイン</h1>
 
 	<div class="container">
-		<form action="/insertProc" method="get">
+		<form action="/loginProc" method="post">
 			<div class="form-group">
 				<label for="user_name">USER ID</label> <input type="text"
 					class="form-control" id="user_name" name="user_name"
