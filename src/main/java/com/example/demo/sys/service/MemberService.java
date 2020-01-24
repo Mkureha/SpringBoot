@@ -13,7 +13,7 @@ public class MemberService {
 	@Resource(name = "com.example.demo.sys.mapper.MemberMapper")
 	MemberMapper mMemberMapper;
 
-	public int MemberLoginService(MemberVO member) throws Exception {
+	public String MemberLoginService(MemberVO member) throws Exception {
 		return mMemberMapper.MemberLogin(member);
 	}
 

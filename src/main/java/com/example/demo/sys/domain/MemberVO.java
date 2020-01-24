@@ -4,6 +4,15 @@ public class MemberVO {
 
 	private String user_name;
 	private String password;
+	private String authority;
+
+	public String getauthority() {
+		return authority;
+	}
+
+	public void setauthority(String authority) {
+		this.authority = authority;
+	}
 
 	public String getuser_name() {
 		return user_name;

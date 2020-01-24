@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,23 +15,26 @@ import com.example.demo.sys.service.BoardService;
 
 @Controller
 public class BoardController {
-
+	
 	@Resource(name = "com.example.demo.sys.service.BoardService")
 	BoardService mBoardService;
 
+	@GetMapping("/")
+	public String home(Model model) {
+		model.addAttribute("list");
+		return "list";
+	}
+	
 	@RequestMapping("/list") // 리스트화면호출
-	private String tosyoList(Model model) throws Exception {
+	private String MemberLogin(Model model) throws Exception {
 
 		model.addAttribute("list", mBoardService.tosyoListService());
-
 		return "list"; // JSP 생성
 	}
 
 	@RequestMapping("/detail/{tosyo_num}")
 	private String tosyoDetail(@PathVariable int ts_numbers, Model model) throws Exception {
-
 		model.addAttribute("detail", mBoardService.tosyoDetailService(ts_numbers));
-
 		return "detail";
 	}
 

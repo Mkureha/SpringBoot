@@ -5,26 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LIBRARY LOGIN</title>
+
 </head>
 <body>
-	<h1>図書管理ログイン</h1>
-
-	<div class="container">
-		<form action="/loginProc" method="post">
-			<div class="form-group">
-				<label for="user_name">USER ID</label> <input type="text"
-					class="form-control" id="user_name" name="user_name"
-					placeholder="IDを入力してください">
-			</div>
-			<div class="form-group">
-				<label for="password">PASSWORD</label> <input type="password"
-					class="form-control" id="password" name="password"
-					placeholder="PASSWORDを入力してください">
-			</div>
-
-			<button class="btn btn-primary" onclick="location.href='/list'">ログイン</button>
-		</form>
-	</div>
-	<%@ include file="bootstrap.jsp"%>
+	<form class="form-signin" method="POST" th:action="@{/login}">
+		<h1 class="h3 mb-3 font-weight-normal">${login_message}</h1>
+		<div class="container">
+			<label for="username" class="sr-only">ID</label> <input type="text"
+				id="username" name="username" class="form-control"
+				placeholder="IDを入力してください" required="" autofocus=""> <label
+				for="password" class="sr-only">Password</label> <input
+				type="password" id="password" name="password" class="form-control"
+				placeholder="Passwordを入力してください" required="">
+		</div>
+		<button class="btn btn-primary btn-block" type="submit">ログイン</button>
+		<%@ include file="bootstrap.jsp"%>
 </body>
 </html>
