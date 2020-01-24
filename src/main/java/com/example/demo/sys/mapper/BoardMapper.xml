@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.sys.mapper.BoardMapper">
+
+	<select id="tosyoCount" resultType="int">
+		SELECT COUNT(*)
+		FROM
+		tosyo_master
+	</select>
+
+	<select id="tosyoList"
+		resultType="com.example.demo.sys.domain.BoardVO">
+			SELECT *
+			FROM tosyo_master
+	</select>
+
+	<select id="tosyoDetail" parameterType="int"
+		resultType="com.example.demo.sys.domain.BoardVO">
+		SELECT *
+		FROM tosyo_master
+		WHERE tosyo_num = #{tosyo_num}
+	</select>
+
+	<insert id="tosyoInsert"
+		parameterType="com.example.demo.sys.domain.BoardVO">
+		INSERT INTO tosyo_master
+		(tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
+		VALUES
+		(#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
+	</insert>
+
+	<update id="boardUpdate"
+		parameterType="com.example.demo.sys.domain.BoardVO">
+		UPDATE tosyo_master
+		SET
+		<if test="tosyo_name != null">
+			tosyo_name = #{tosyo_name}
+		</if>
+		<if test="tosyo_name != null and tosyo_daibunrui != null"> , </if>
+		<if test="tosyo_daibunrui != null">
+			tosyo_daibunrui = #{tosyo_daibunrui}
+		</if>
+		WHERE tosyo_num = #{tosyo_num}
+	</update>
+
+	<delete id="tosyoDelete" parameterType="int">
+		DELETE FROM tosyo_master
+		WHERE tosyo_num = #{tosyo_num}
+	</delete>
+</mapper>

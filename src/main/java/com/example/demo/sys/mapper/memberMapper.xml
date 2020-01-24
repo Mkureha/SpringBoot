@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 해당하는 맵퍼의 네임스페이스를 memberMapper 선언 -->
+<mapper namespace="memberMapper">
+	<!-- select를 하는 구문으로 선언을 하고 select 하는 질의어의 고유ID는 Id_Check로 선언 반환값은 INT -->
+	<select id="Id_Check" resultType="int">
+		<!-- 검색을 하는데 갯수를 출력해라 MEMBER 테이블에 해당하는 테이블의 별칭은 m으로 선언한다. -->
+		SELECT COUNT(*) FROM MEMBER
+		<!-- 검색을 하는데 m테이블에 m_id 는 매개변수로 받아온 m_id와 동일해야 한다. -->
+		WHERE userId = #{userId}
+		<!-- 결과 : 0이면 아이디 중복 x 1이면 중복 검색 결과가 없으면 0으로 나옴 아래는 다 생략 동일하니 -->
+	</select>
+
+	<select id="Login" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE userId = #{userId} and password = #{password}
+	</select>
+
+	<select id="Login_Info" resultType="Member">
+		SELECT * FROM MEMBER
+		WHERE userId = #{userId} AND password = #{password}
+	</select>
+</mapper>
