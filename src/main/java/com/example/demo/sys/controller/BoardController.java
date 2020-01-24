@@ -27,9 +27,9 @@ public class BoardController {
 	}
 
 	@RequestMapping("/detail/{tosyo_num}")
-	private String tosyoDetail(@PathVariable String tosyo_num, Model model) throws Exception {
+	private String tosyoDetail(@PathVariable int ts_numbers, Model model) throws Exception {
 
-		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_num));
+		model.addAttribute("detail", mBoardService.tosyoDetailService(ts_numbers));
 
 		return "detail";
 	}
@@ -55,9 +55,9 @@ public class BoardController {
 	}
 
 	@RequestMapping("/update/{tosyo_num}") // 게시글수정폼호출
-	private String tosyoUpdateForm(@PathVariable String tosyo_num, Model model) throws Exception {
+	private String tosyoUpdateForm(@PathVariable int ts_numbers, Model model) throws Exception {
 
-		model.addAttribute("detail", mBoardService.tosyoDeleteService(tosyo_num));
+		model.addAttribute("detail", mBoardService.tosyoDeleteService(ts_numbers));
 
 		return "update";
 	}
@@ -70,8 +70,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("delete/{tosyo_num}")
-	private String tosyoDelete(@PathVariable String tosyo_num) throws Exception {
-		mBoardService.tosyoDeleteService(tosyo_num);
+	private String tosyoDelete(@PathVariable int ts_numbers) throws Exception {
+		mBoardService.tosyoDeleteService(ts_numbers);
 
 		return "redirect:/list";
 	}

@@ -17,37 +17,37 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			FROM tosyo_master
 	</select>
 
-	<select id="tosyoDetail" parameterType="string"
+	<select id="tosyoDetail" parameterType="int"
 		resultType="com.example.demo.sys.domain.BoardVO">
 		SELECT *
 		FROM tosyo_master
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE ts_numbers = #{ts_numbers}
 	</select>
 
 	<insert id="tosyoInsert"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		INSERT INTO tosyo_master
-		(tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
+		(ts_numbers,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
 		VALUES
-		(#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
+		(#{ts_numbers},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
 	</insert>
 
 	<update id="tosyoUpdate"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		UPDATE tosyo_master
 		SET
+		<if test="tosyo_num != null">
+			tosyo_num = #{tosyo_num}
+		</if>
+		<if test="tosyo_num != null and tosyo_name != null"> , </if>
 		<if test="tosyo_name != null">
 			tosyo_name = #{tosyo_name}
 		</if>
-		<if test="tosyo_name != null and tosyo_daibunrui != null"> , </if>
-		<if test="tosyo_daibunrui != null">
-			tosyo_daibunrui = #{tosyo_daibunrui}
-		</if>
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE ts_numbers = #{ts_numbers}
 	</update>
 
-	<delete id="tosyoDelete" parameterType="string">
+	<delete id="tosyoDelete" parameterType="int">
 		DELETE FROM tosyo_master
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE ts_numbers = #{ts_numbers}
 	</delete>
 </mapper>

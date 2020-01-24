@@ -11,7 +11,8 @@
 
 	<h2>BOOK LIST</h2>
 
-	<button class="btn btn-primary" onclick="location.href='/insert'">ADDBOOK</button>
+	<button class="btn btn-primary" onclick="location.href='/insert'">ADD
+		BOOK</button>
 
 	<div class="container">
 		<table class="table table-hover">
@@ -21,12 +22,15 @@
 				<th>COLOR1</th>
 				<th>COLOR2</th>
 			</tr>
-			<tr>
-				<td>${list.tosyo_num}</td>
-				<td>${list.tosyo_name}</td>
-				<td>${list.tosyo_daibunrui}</td>
-				<td>${list.tosyo_cyubunrui}</td>
-			</tr>
+			<c:forEach var="1" items="${tosyo_master}">
+				<tr>
+					<td>${1.ts_numbers}</td>
+					<td>${1.tosyo_num}</td>
+					<td>${1.tosyo_name}</td>
+					<td>${1.tosyo_daibunrui}</td>
+					<td>${1.tosyo_cyubunrui}</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</div>
 	<%@ include file="bootstrap.jsp"%>
