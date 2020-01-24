@@ -1,6 +1,7 @@
 package com.example.demo.sys.controller;
 
 import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("/detail/{tosyo_num}")
-	private String tosyoDetail(@PathVariable int tosyo_num, Model model) throws Exception {
+	private String tosyoDetail(@PathVariable String tosyo_num, Model model) throws Exception {
 
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_num));
 
@@ -42,7 +43,8 @@ public class BoardController {
 	private String tosyoInsertProc(HttpServletRequest request) throws Exception {
 
 		BoardVO tosyo_master = new BoardVO();
-
+		
+        tosyo_master.settosyo_num(request.getParameter("tosyo_num"));
 		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));
 		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
 		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
@@ -53,7 +55,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("/update/{tosyo_num}") // 게시글수정폼호출
-	private String tosyoUpdateForm(@PathVariable int tosyo_num, Model model) throws Exception {
+	private String tosyoUpdateForm(@PathVariable String tosyo_num, Model model) throws Exception {
 
 		model.addAttribute("detail", mBoardService.tosyoDeleteService(tosyo_num));
 
@@ -68,7 +70,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("delete/{tosyo_num}")
-	private String tosyoDelete(@PathVariable int tosyo_num) throws Exception {
+	private String tosyoDelete(@PathVariable String tosyo_num) throws Exception {
 		mBoardService.tosyoDeleteService(tosyo_num);
 
 		return "redirect:/list";

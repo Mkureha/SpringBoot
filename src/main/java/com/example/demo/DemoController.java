@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DemoController {
 
-	@RequestMapping("/SB")
+	@RequestMapping("/")
 	@ResponseBody
 	public String home() {
 		// TODO Auto-generated method stub

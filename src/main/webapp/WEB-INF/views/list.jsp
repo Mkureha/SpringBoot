@@ -12,7 +12,6 @@
 	<h2>BOOK LIST</h2>
 
 	<button class="btn btn-primary" onclick="location.href='/insert'">ADDBOOK</button>
-	<button class="btn btn-primary" onclick="location.href='/logout'">LOGINOUT</button>
 
 	<div class="container">
 		<table class="table table-hover">

@@ -19,7 +19,7 @@ public class BoardService {
 		return mBoardMapper.tosyoList();
 	}
 
-	public BoardVO tosyoDetailService(int tosyo_num) throws Exception {
+	public BoardVO tosyoDetailService(String tosyo_num) throws Exception {
 		return mBoardMapper.tosyoDetail(tosyo_num);
 	}
 
@@ -31,7 +31,7 @@ public class BoardService {
 		return mBoardMapper.tosyoUpdate(tosyo_master);
 	}
 
-	public String tosyoDeleteService(int tosyo_num) throws Exception {
+	public String tosyoDeleteService(String tosyo_num) throws Exception {
 		return mBoardMapper.tosyoDelete(tosyo_num);
 	}
 

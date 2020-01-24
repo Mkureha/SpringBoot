@@ -2,15 +2,15 @@ package com.example.demo.sys.domain;
  
 public class BoardVO {
 
-	private int tosyo_num;
+	private String tosyo_num;
     private String tosyo_name;
 	private String tosyo_daibunrui;
     private String tosyo_cyubunrui;
     
-	public int gettosyo_num() {
+	public String gettosyo_num() {
 		return tosyo_num;
 	}
-	public void settosyo_num(int tosyo_num) {
+	public void settosyo_num(String tosyo_num) {
 		this.tosyo_num = tosyo_num;
 	}
 	public String gettosyo_name() {
