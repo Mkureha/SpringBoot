@@ -23,15 +23,15 @@ public class BoardService {
 		return mBoardMapper.tosyoDetail(tosyo_num);
 	}
 
-	public String tosyoInsertService(BoardVO tosyo_master) throws Exception {
+	public int tosyoInsertService(BoardVO tosyo_master) throws Exception {
 		return mBoardMapper.tosyoInsert(tosyo_master);
 	}
 
-	public String tosyoUpdateService(BoardVO tosyo_master) throws Exception {
+	public int tosyoUpdateService(BoardVO tosyo_master) throws Exception {
 		return mBoardMapper.tosyoUpdate(tosyo_master);
 	}
 
-	public String tosyoDeleteService(String tosyo_num) throws Exception {
+	public int tosyoDeleteService(String tosyo_num) throws Exception {
 		return mBoardMapper.tosyoDelete(tosyo_num);
 	}
 

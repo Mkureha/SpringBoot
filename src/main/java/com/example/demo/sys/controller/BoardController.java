@@ -63,7 +63,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("/updateProc")
-	private String tosyoUpdateProc(HttpServletRequest request) throws Exception {
+	private int tosyoUpdateProc(HttpServletRequest request) throws Exception {
 		BoardVO tosyo_master = (BoardVO) request.getParameterMap();
 
 		return mBoardService.tosyoUpdateService(tosyo_master);

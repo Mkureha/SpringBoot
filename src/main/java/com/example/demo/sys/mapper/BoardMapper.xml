@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		(#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
 	</insert>
 
-	<update id="boardUpdate"
+	<update id="tosyoUpdate"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		UPDATE tosyo_master
 		SET
