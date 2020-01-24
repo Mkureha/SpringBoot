@@ -1,21 +1,15 @@
 package com.example.demo;
 
 import javax.inject.Inject;
+
 import javax.servlet.http.HttpSession;
 
 import com.example.demo.sys.domain.member;
 import com.example.demo.sys.persistence.member_dao;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.method.annotation.AbstractJsonpResponseBodyAdvice;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class HomeController {
@@ -69,22 +63,4 @@ public class HomeController {
 		// /페이지로 리다이렉트 시킨다.
 		return "redirect:/";
 	}
-
-//JSONP를 사용하기 위해 선언
-	@ControllerAdvice
-	public class JsonpAdviceController extends AbstractJsonpResponseBodyAdvice {
-		public JsonpAdviceController() {
-			super("callback");
-		}
-	}
-
-	@Bean
-	public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-		MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		jsonConverter.setObjectMapper(objectMapper);
-		return jsonConverter;
-	}
-
 }
