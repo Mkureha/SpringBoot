@@ -17,18 +17,19 @@
 	<div class="container">
 		<table class="table table-hover">
 			<tr>
-				<th>NUM</th>
+				<th>NUMBER1</th>
+				<th>NUMBER2</th>
 				<th>NAME</th>
 				<th>COLOR1</th>
 				<th>COLOR2</th>
 			</tr>
-			<c:forEach var="1" items="${tosyo_master}">
+			<c:forEach var="tosyo" items="${list}">
 				<tr>
-					<td>${1.ts_numbers}</td>
-					<td>${1.tosyo_num}</td>
-					<td>${1.tosyo_name}</td>
-					<td>${1.tosyo_daibunrui}</td>
-					<td>${1.tosyo_cyubunrui}</td>
+					<td>${tosyo.ts_numbers }</td>
+					<td>${tosyo.tosyo_num }</td>
+					<td>${tosyo.tosyo_name }</td>
+					<td>${tosyo.tosyo_daibunrui }</td>
+					<td>${tosyo.tosyo_cyubunrui }</td>
 				</tr>
 			</c:forEach>
 		</table>
