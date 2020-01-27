@@ -19,6 +19,14 @@ public class BoardController {
 	@Resource(name = "com.example.demo.sys.service.BoardService")
 	BoardService mBoardService;
 
+	@RequestMapping("/login")
+	@GetMapping
+	public String viewLogin(Model model) {
+		// View attribute
+		model.addAttribute("login_message", "社内図書管理システム");
+		return "login";
+	}
+	
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("list");

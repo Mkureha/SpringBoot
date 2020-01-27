@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/login")
-public class MemberController {
-
+public class LoginController {
+	
 	@GetMapping
-	public String MemberLogin(Model model) {
-		model.addAttribute("login_message", "図書管理システム");
+	public String viewLogin(Model model) {
+		// View attribute
+		model.addAttribute("login_message", "社内図書管理システム");
 		return "login";
 	}
+	
 }

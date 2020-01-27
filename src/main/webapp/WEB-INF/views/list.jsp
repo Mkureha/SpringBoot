@@ -13,6 +13,8 @@
 
 	<button class="btn btn-primary" onclick="location.href='/insert'">ADD
 		BOOK</button>
+	<input type="button" value="logout" onclick="location.href='/login'">
+	<br>
 
 	<div class="container">
 		<table class="table table-hover">
