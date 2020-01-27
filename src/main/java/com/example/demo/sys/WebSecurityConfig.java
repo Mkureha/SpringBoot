@@ -28,21 +28,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/list")
                 .and()
             .logout()	
             	.logoutUrl("/logout")
-            	.logoutSuccessUrl("/")
+            	.logoutSuccessUrl("/login")
             	.invalidateHttpSession(true)
                 .permitAll();
+        http.cors().and();
+		http.csrf().disable();
     }
     @Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.jdbcAuthentication()
 				.dataSource(dataSource)
-				.usersByUsernameQuery("select user_name, password from users where user_name = ?")
-				.authoritiesByUsernameQuery("select user_name, authority as role from users where user_name = ?")
+				.usersByUsernameQuery("select user_name, password from user where user_name = ?")
+				.authoritiesByUsernameQuery("select user_name, authority from user where user_name = ?")
 				.passwordEncoder(new BCryptPasswordEncoder())
 		;
 	}

@@ -32,6 +32,7 @@
 					placeholder="中分類を入力してください">
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
+			<input type="button" value="Back" class="btn btn-primary" onclick="location.href='/list'">
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>

@@ -13,7 +13,7 @@
 
 	<button class="btn btn-primary" onclick="location.href='/insert'">ADD
 		BOOK</button>
-	<input type="button" value="logout" onclick="location.href='/login'">
+	<input type="button" value="logout" class="btn btn-primary" onclick="location.href='/login'">
 	<br>
 
 	<div class="container">
