@@ -2,24 +2,23 @@ package com.example.demo.sys.domain;
 
 public class User {
 
-	private String user_name;
+	private String username;
 	private String password;
-	private String authority;
 
 	public User() {
 	}
 
-	public User(String user_name, String password) {
-		this.user_name = user_name;
+	public User(String username, String password) {
+		this.username = username;
 		this.password = password;
 	}
 
-	public String getuser_name() {
-		return user_name;
+	public String getusername() {
+		return username;
 	}
 
-	public void setuser_name(String user_name) {
-		this.user_name = user_name;
+	public void setusername(String username) {
+		this.username = username;
 	}
 
 	public String getpassword() {
@@ -28,14 +27,6 @@ public class User {
 
 	public void setpassword(String password) {
 		this.password = password;
-	}
-	
-	public String getauthority() {
-		return authority;
-	}
-
-	public void setauthority(String authority) {
-		this.authority = authority;
 	}
 
 }
