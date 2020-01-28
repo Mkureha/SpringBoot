@@ -1,2 +1,2 @@
 # SpringBoot
-SpringBoot Pratice - Add Home Page
+SpringBoot + Mysql - Book Library System
