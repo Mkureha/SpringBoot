@@ -19,15 +19,13 @@
 	<div class="container">
 		<table class="table table-hover">
 			<tr>
-				<th>NUMBER1</th>
-				<th>NUMBER2</th>
-				<th>NAME</th>
-				<th>COLOR1</th>
-				<th>COLOR2</th>
+				<th>Book Nmber</th>
+				<th>Book Name</th>
+				<th>Book COLOR1</th>
+				<th>Book COLOR2</th>
 			</tr>
 			<c:forEach var="tosyo" items="${list}">
-				<tr>
-					<td>${tosyo.ts_numbers }</td>
+				<tr onclick="location.href='/detail/${tosyo.tosyo_num }'">
 					<td>${tosyo.tosyo_num }</td>
 					<td>${tosyo.tosyo_name }</td>
 					<td>${tosyo.tosyo_daibunrui }</td>
