@@ -40,8 +40,8 @@ public class BoardController {
 			mBoardService.loginService(user);
 
 			return "redirect:/list";
-		}
-
+		}	
+	
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("list");

@@ -10,19 +10,29 @@
 <body>
 
 	<h2>BOOK LIST</h2>
+	<p>
+		<select name="searchType" id="select_searchType">
+			<option value="tosyo_num" selected="selected">図書番号</option>
+			<option value="tosyo_name">図書名</option>
+			<option value="tosyo_daibunrui">大分類</option>
+			<option value="tosyo_cyubunrui">中分類</option>
+		</select> <input type="text" name="searchWord" id="searchWord"> <a
+			href="javascript:fn-searchlist()" class="btn">検索</a>
+	</p>
 
 	<button class="btn btn-primary" onclick="location.href='/insert'">ADD
 		BOOK</button>
-	<input type="button" value="logout" class="btn btn-primary" onclick="location.href='/login'">
+	<input type="button" value="logout" class="btn btn-primary"
+		onclick="location.href='/login'">
 	<br>
 
 	<div class="container">
 		<table class="table table-hover">
 			<tr>
-				<th>Book Nmber</th>
-				<th>Book Name</th>
-				<th>Book COLOR1</th>
-				<th>Book COLOR2</th>
+				<th>図書番号</th>
+				<th>図書名</th>
+				<th>大分類</th>
+				<th>中分類</th>
 			</tr>
 			<c:forEach var="tosyo" items="${list}">
 				<tr onclick="location.href='/detail/${tosyo.tosyo_number }'">

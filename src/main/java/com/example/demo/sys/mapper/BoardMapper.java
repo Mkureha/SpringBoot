@@ -11,7 +11,7 @@ public interface BoardMapper {
 	//로그인
 	public int login(User user) throws Exception;
 	//도서개수
-	public int tosyoCount() throws Exception;
+	public int tosyoCount();
 	//도서목록
 	public List<BoardVO> tosyoList() throws Exception;
 	//도서상세

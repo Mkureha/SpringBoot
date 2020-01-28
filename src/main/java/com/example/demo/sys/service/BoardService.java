@@ -19,7 +19,7 @@ public class BoardService {
 	public int loginService(User member) throws Exception {
 		return mBoardMapper.login(member);
 	}
-	
+
 	public List<BoardVO> tosyoListService() throws Exception {
 		return mBoardMapper.tosyoList();
 	}
