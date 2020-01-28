@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.sys.domain.BoardVO;
+import com.example.demo.sys.domain.User;
 import com.example.demo.sys.mapper.BoardMapper;
 
 @Service("com.example.demo.sys.service.BoardService")
@@ -15,6 +16,10 @@ public class BoardService {
 	@Resource(name = "com.example.demo.sys.mapper.BoardMapper")
 	BoardMapper mBoardMapper;
 
+	public int loginService(User member) throws Exception {
+		return mBoardMapper.login(member);
+	}
+	
 	public List<BoardVO> tosyoListService() throws Exception {
 		return mBoardMapper.tosyoList();
 	}

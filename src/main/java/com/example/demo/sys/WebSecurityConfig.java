@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -19,6 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+                .antMatchers("/admin", "/admin/*").authenticated()
+                .antMatchers("/userｓ", "/userｓ/*").authenticated()
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
@@ -38,6 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("select username, password from user where username = ?");
+				.usersByUsernameQuery("select username, password, enabled from user where username = ?")
+				.authoritiesByUsernameQuery("select username, authority from user where username = ?")
+				.passwordEncoder(new BCryptPasswordEncoder());
 	}
 }

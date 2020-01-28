@@ -5,6 +5,15 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <mapper namespace="com.example.demo.sys.mapper.BoardMapper">
 
+	<select id="login" resultType="com.example.demo.sys.domain.User">
+		SELECT username
+		,password
+		,authority
+		,enabled
+		FROM user
+		WHERE username = #{username}
+	</select>
+
 	<select id="tosyoCount" resultType="int">
 		SELECT COUNT(*)
 		FROM
@@ -13,8 +22,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<select id="tosyoList"
 		resultType="com.example.demo.sys.domain.BoardVO">
-			SELECT *
-			FROM tosyo_master
+		SELECT *
+		FROM tosyo_master
 	</select>
 
 	<select id="tosyoDetail" parameterType="int"

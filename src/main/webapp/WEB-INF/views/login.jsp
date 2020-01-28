@@ -13,7 +13,7 @@
 	<div class="container centered text-center">
 		<form class="form-signin" method="POST" action="/login"
 			th:action="@{/login}">
-			<h1 class="h3 mb-3 font-weight-normal">${login_message}</h1>
+			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
 			<div class="container">
 				<label for="username" class="sr-only">ID</label> <input type="text"
 					id="username" name="username" class="form-control"
@@ -22,7 +22,9 @@
 					id="password" name="password" class="form-control"
 					placeholder="Passwordを入力してください">
 			</div>
-			<button class="btn btn-primary btn-block" type="submit">ログイン</button>
+			<div class="btn_area">
+			<button type="submit" class="btn btn-primary">ログイン</button>
+			</div>
 			<%@ include file="bootstrap.jsp"%>
 		</form>
 	</div>
