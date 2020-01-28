@@ -2,11 +2,18 @@ package com.example.demo.sys.domain;
  
 public class BoardVO {
 
+	private int tosyo_number;
 	private String tosyo_num;
     private String tosyo_name;
 	private String tosyo_daibunrui;
     private String tosyo_cyubunrui;
     
+    public int gettosyo_number() {
+		return tosyo_number;
+	}
+	public void settosyo_number(int tosyo_number) {
+		this.tosyo_number = tosyo_number;
+	}
 	public String gettosyo_num() {
 		return tosyo_num;
 	}

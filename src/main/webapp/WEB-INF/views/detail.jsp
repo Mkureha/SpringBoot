@@ -12,9 +12,9 @@
 	<h2>図書詳細ページ</h2>
 
 	<button class="btn btn-primary"
-		onclick="location.href='/update/${detail.tosyo_num }'">修正</button>
+		onclick="location.href='/update/${detail.tosyo_number }'">修正</button>
 	<button class="btn btn-danger"
-		onclick="location.href='/delete/${detail.tosyo_num }'">削除</button>
+		onclick="location.href='/delete/${detail.tosyo_number }'">削除</button>
 
 	<div class="container">
 		<form action="/insertProc" method="post">

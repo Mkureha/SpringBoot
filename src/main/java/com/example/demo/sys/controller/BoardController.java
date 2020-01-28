@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.sys.domain.BoardVO;
@@ -54,9 +55,9 @@ public class BoardController {
 		return "list"; // JSP 생성
 	}
 
-	@RequestMapping("/detail/{tosyo_num}")
-	private String tosyoDetail(@PathVariable String tosyo_num, Model model) throws Exception {
-		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_num));
+	@RequestMapping("/detail/{tosyo_number}")
+	private String tosyoDetail(@PathVariable int tosyo_number, Model model) throws Exception {
+		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
 		return "detail";
 	}
 
@@ -80,15 +81,15 @@ public class BoardController {
 		return "redirect:/list";
 	}
 
-	@RequestMapping("/update/{tosyo_num}") // 게시글수정폼호출
-	private String tosyoUpdateForm(@PathVariable String tosyo_num, Model model) throws Exception {
+	@RequestMapping("/update/{tosyo_number}") // 게시글수정폼호출
+	private String tosyoUpdateForm(@PathVariable int tosyo_number, Model model) throws Exception {
 
-		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_num));
+		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
 
 		return "update";
 	}
 
-	@RequestMapping("/updateProc")
+	@PostMapping("/updateProc")
 	private String tosyoUpdateProc(HttpServletRequest request) throws Exception {
 		
 		BoardVO tosyo_master = new BoardVO();
@@ -97,15 +98,15 @@ public class BoardController {
 		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));
 		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
 		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
+		tosyo_master.settosyo_number(Integer.parseInt(request.getParameter("tosyo_number")));
 		
 		mBoardService.tosyoUpdateService(tosyo_master);
-
-		return "redirect:/detail/"+request.getParameter("tosyo_num");
+		return "redirect:/detail/"+request.getParameter("tosyo_number");
 	}
 
-	@RequestMapping("delete/{tosyo_num}")
-	private String tosyoDelete(@PathVariable String tosyo_num) throws Exception {
-		mBoardService.tosyoDeleteService(tosyo_num);
+	@RequestMapping("delete/{tosyo_number}")
+	private String tosyoDelete(@PathVariable int tosyo_number) throws Exception {
+		mBoardService.tosyoDeleteService(tosyo_number);
 
 		return "redirect:/list";
 	}

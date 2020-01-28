@@ -33,7 +33,7 @@
 					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
 					value="${detail.tosyo_cyubunrui }">
 			</div>
-			<input type="hidden" name="tosyo_num" value="${tosyo_num }"/>
+			<input type="hidden" name="tosyo_number" value="${tosyo_number }"/>
 			<button type="submit" class="btn btn-primary">修正</button>
 		</form>
 	</div>

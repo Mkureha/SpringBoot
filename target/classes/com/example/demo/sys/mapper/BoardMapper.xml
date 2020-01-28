@@ -26,19 +26,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM tosyo_master
 	</select>
 
-	<select id="tosyoDetail" parameterType="String"
+	<select id="tosyoDetail" parameterType="int"
 		resultType="com.example.demo.sys.domain.BoardVO">
 		SELECT *
 		FROM tosyo_master
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE tosyo_number =
+		#{tosyo_number}
 	</select>
 
 	<insert id="tosyoInsert"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		INSERT INTO tosyo_master
-		(tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
+		(tosyo_number,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
 		VALUES
-		(#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
+		(#{tosyo_number},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
 	</insert>
 
 	<update id="tosyoUpdate"
@@ -59,11 +60,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<if test="tosyo_cyubunrui != null">
 			,tosyo_cyubunrui = #{tosyo_cyubunrui}
 		</if>
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE tosyo_number = #{tosyo_number}
 	</update>
 
-	<delete id="tosyoDelete" parameterType="String">
+	<delete id="tosyoDelete" parameterType="int">
 		DELETE FROM tosyo_master
-		WHERE tosyo_num = #{tosyo_num}
+		WHERE tosyo_number = #{tosyo_number}
 	</delete>
 </mapper>

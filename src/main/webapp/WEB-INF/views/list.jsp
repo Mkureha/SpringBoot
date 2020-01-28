@@ -25,7 +25,7 @@
 				<th>Book COLOR2</th>
 			</tr>
 			<c:forEach var="tosyo" items="${list}">
-				<tr onclick="location.href='/detail/${tosyo.tosyo_num }'">
+				<tr onclick="location.href='/detail/${tosyo.tosyo_number }'">
 					<td>${tosyo.tosyo_num }</td>
 					<td>${tosyo.tosyo_name }</td>
 					<td>${tosyo.tosyo_daibunrui }</td>
