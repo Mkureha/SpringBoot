@@ -22,4 +22,5 @@ public interface BoardMapper {
 	public int tosyoUpdate(BoardVO tosyo_master) throws Exception;
 	//도서삭제
 	public int tosyoDelete(int tosyo_number) throws Exception;
+	
 }
