@@ -13,17 +13,25 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		FROM user
 		WHERE username = #{username}
 	</select>
-
-	<select id="tosyoCount" resultType="int">
+	
+	<select id="tosyocount" resultType="int">
 		SELECT COUNT(*)
 		FROM
 		tosyo_master
 	</select>
-
+	
 	<select id="tosyoList"
 		resultType="com.example.demo.sys.domain.BoardVO">
 		SELECT *
 		FROM tosyo_master
+	</select>
+
+	<select id="ListPage"
+		resultType="com.example.demo.sys.domain.Paging">
+		SELECT *
+		FROM tosyo_master
+		ORDER BY tosyo_num ASC
+		LIMIT #{pagenum}, #{contentnum}
 	</select>
 
 	<select id="tosyoDetail" parameterType="int"

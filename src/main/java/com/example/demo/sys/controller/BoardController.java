@@ -1,5 +1,8 @@
 package com.example.demo.sys.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,16 +15,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.sys.domain.BoardVO;
+import com.example.demo.sys.domain.Paging;
 import com.example.demo.sys.domain.User;
+import com.example.demo.sys.mapper.BoardMapper;
 import com.example.demo.sys.service.BoardService;
 
 @Controller
 public class BoardController {
 
+	private static final BoardMapper mapper = null;
 	@Resource(name = "com.example.demo.sys.service.BoardService")
 	BoardService mBoardService;
-
-	@RequestMapping("/login") // 도서등록폼호출
+	@RequestMapping("/login") // 로그인폼호출
 	private String loginForm() {
 		return "login";
 	}
@@ -40,20 +45,47 @@ public class BoardController {
 			mBoardService.loginService(user);
 
 			return "redirect:/list";
-		}	
+		}
 	
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("list");
 		return "list";
 	}
-
+	
 	@RequestMapping("/list") // 리스트화면호출
 	private String MemberLogin(Model model) throws Exception {
 
 		model.addAttribute("list", mBoardService.tosyoListService());
 		return "list"; // JSP 생성
-	}	
+	}
+	
+	@RequestMapping("/ListPage")
+	public String ListPage(HttpServletRequest request) {
+		Paging paging = new Paging();
+		String pagenum = request.getParameter("pagenum");
+		String contentnum = request.getParameter("contentnum");
+		int cpagenum = Integer.parseInt(pagenum);
+		int ccontentnum = Integer.parseInt(contentnum);
+		
+		paging.setTotalcount(mapper.tosyocount()); //전체계수
+		paging.setPagenum(cpagenum-1); //현재 페이지 객체 지정
+		paging.setContentnum(ccontentnum); //한 페이지 게시글 수
+		paging.setCurrentblock(cpagenum); //현재 페이지블록 번호
+		paging.setLastblock(paging.getTotalcount()); // 마지막 블록 전체 게시글 수
+		
+		paging.prevnext(cpagenum); //현재 페이지 화살표
+		paging.setStartpage(paging.getCurrentblock()); //시작페이지 블록 번호
+		paging.setEndpage(paging.getLastblock(), paging.getCurrentblock()); //마지막 페이지 블럭 현재 페이지 블록
+		
+		List<BoardVO> tosyoList = new ArrayList<>();
+		tosyoList = mapper.ListPage(paging.getPagenum()*10, paging.getContentnum());
+		
+		request.setAttribute("list", tosyoList);
+		request.setAttribute("page", paging);
+		
+		return "list";
+	}
 	
 	@RequestMapping("/detail/{tosyo_number}")
 	private String tosyoDetail(@PathVariable int tosyo_number, Model model) throws Exception {

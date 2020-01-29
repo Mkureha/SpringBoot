@@ -16,7 +16,7 @@ public class JspTest {
 	@RequestMapping("/test")
 	private String jspTest() throws Exception {
 
-		System.out.println(mBoardMapper.tosyoCount()); // <<<<TEST
+		System.out.println(mBoardMapper.tosyocount()); // <<<<TEST
 
 		return "test";
 	}
