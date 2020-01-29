@@ -53,8 +53,8 @@ public class BoardController {
 
 		model.addAttribute("list", mBoardService.tosyoListService());
 		return "list"; // JSP 생성
-	}
-
+	}	
+	
 	@RequestMapping("/detail/{tosyo_number}")
 	private String tosyoDetail(@PathVariable int tosyo_number, Model model) throws Exception {
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));

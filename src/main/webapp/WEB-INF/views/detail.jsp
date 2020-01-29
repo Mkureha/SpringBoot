@@ -34,6 +34,10 @@
 				<label>中分類</label>
 				<p>${detail.tosyo_cyubunrui }</p>
 			</div>
+			<div class="form-group">
+				<label>在庫有無</label>
+				<p>${detail.tosyo_count }</p>
+			</div>
 			<input type="button" value="Back" class="btn btn-primary"
 				onclick="location.href='/list'">
 		</form>

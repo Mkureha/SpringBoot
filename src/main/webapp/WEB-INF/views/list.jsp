@@ -33,6 +33,7 @@
 				<th>図書名</th>
 				<th>大分類</th>
 				<th>中分類</th>
+				<th>在庫有無</th>
 			</tr>
 			<c:forEach var="tosyo" items="${list}">
 				<tr onclick="location.href='/detail/${tosyo.tosyo_number }'">
@@ -40,6 +41,7 @@
 					<td>${tosyo.tosyo_name }</td>
 					<td>${tosyo.tosyo_daibunrui }</td>
 					<td>${tosyo.tosyo_cyubunrui }</td>
+					<td>${tosyo.tosyo_count }</td>
 				</tr>
 			</c:forEach>
 		</table>
