@@ -26,6 +26,7 @@ public class BoardController {
 	private static final BoardMapper mapper = null;
 	@Resource(name = "com.example.demo.sys.service.BoardService")
 	BoardService mBoardService;
+	
 	@RequestMapping("/login") // 로그인폼호출
 	private String loginForm() {
 		return "login";
