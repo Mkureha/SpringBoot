@@ -13,8 +13,6 @@ public interface BoardMapper {
 	public int login(User user) throws Exception;
 	//도서개수
 	public int tosyocount();
-	//도서목록
-	public List<BoardVO> tosyoList() throws Exception;
 	//도서목록페이징
 	public List<BoardVO> listpage(@Param("pagenum") int pagenum, @Param("contentnum") int contentnum);
 	//도서상세

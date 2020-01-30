@@ -8,17 +8,30 @@
 <title>LIST</title>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-function page(idx){
-	var pagenum = idx;
-	var contentnum = $("#contentnum option:selected").val();
-	location.href="${pageContext.request.contextPath}/list?pagenum="+pagenum+"&contentnum="+contentnum;	
-};
+	function page(idx) {
+		//Paging Add
+		var pagenum = idx;
+		var contentnum = 10;
+		location.href = "${pageContext.request.contextPath}/list?pagenum="
+				+ pagenum + "&contentnum=" + contentnum;
+	};
+
+	//Search Add
+	$(document).on('click', '#btnSearch', function(e) {
+		e.preventDefault();
+		var url = "${getBoardList}";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
 </script>
 </head>
 <body>
 	<h2>BOOK LIST</h2>
 	<p>
-		<select name="searchType" id="select_searchType">
+		<select class="form-control form-control-sm" name="searchType"
+			id="searchType">
 			<option value="tosyo_num" selected="selected">図書番号</option>
 			<option value="tosyo_name">図書名</option>
 			<option value="tosyo_daibunrui">大分類</option>
@@ -27,9 +40,10 @@ function page(idx){
 	</p>
 	<form action="search" method="get">
 		<div>
-			<input name="keyword" type="text" placeholder="Input Keyword">
+			<input type="text" class="form-control form-control-sm"
+				name="keyword" id="keyword" placeholder="Input Keyword">
 		</div>
-		<a href="javascript:fn-searchlist()" class="btn">検索</a>
+		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">検索</button>
 	</form>
 
 
@@ -69,13 +83,13 @@ function page(idx){
 			<tfoot>
 				<tr>
 					<td colspan="2"><c:if test="${page.prev}">
-							<a style="text-decoration: name;"
+							<a style="text-decoration: none;"
 								href="javascript:page(${page.getstartpage()-1});">&laquo;</a>
 						</c:if> <c:forEach begin="${page.getstartpage()}"
 							end="${page.getendpage()}" var="idx">
-							<a style="text-decoration: name;" href="javascript:page(${idx});">${idx}</a>
+							<a style="text-decoration: none;" href="javascript:page(${idx});">${idx}</a>
 						</c:forEach> <c:if test="${page.next}">
-							<a style="text-decoration: name;"
+							<a style="text-decoration: none;"
 								href="javascript:page(${page.getendpage()+1});">&raquo;</a>
 						</c:if></td>
 				</tr>

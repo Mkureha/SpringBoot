@@ -48,18 +48,12 @@ public class BoardController {
 		return "redirect:/list";
 	}
 
-	/*@RequestMapping("/list") // 리스트화면호출
-	private String tosyolist(Model model) throws Exception {
-				
-		model.addAttribute("list", mBoardService.tosyoListService());
-		return "list"; // JSP 생성
-	}*/
-
 	@RequestMapping("/list")
-	public String listpage(HttpServletRequest request) {
+	public String list(HttpServletRequest request) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
+		System.out.println(contentnum);
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
 
@@ -73,7 +67,7 @@ public class BoardController {
 		BoardVO.setstartpage(BoardVO.getcurrentblock()); // 시작페이지 블록 번호
 		BoardVO.setendpage(BoardVO.getlastblock(), BoardVO.getcurrentblock()); // 마지막 페이지 블럭 현재 페이지 블록
 
-		List<BoardVO> listpage = new ArrayList<>();
+		List<BoardVO> listpage = new ArrayList<BoardVO>();
 		listpage = mapper.listpage(BoardVO.getpagenum() * 10, BoardVO.getcontentnum());
 
 		request.setAttribute("list", listpage);

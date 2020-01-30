@@ -20,10 +20,6 @@ public class BoardService {
 		return mBoardMapper.login(member);
 	}
 
-	public List<BoardVO> tosyoListService() throws Exception {
-		return mBoardMapper.tosyoList();
-	}
-
 	public BoardVO tosyoDetailService(int tosyo_number) throws Exception {
 		return mBoardMapper.tosyoDetail(tosyo_number);
 	}
