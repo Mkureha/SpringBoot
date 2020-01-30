@@ -47,12 +47,6 @@ public class BoardController {
 			return "redirect:/list";
 		}
 	
-	@GetMapping("/")
-	public String home(Model model) {
-		model.addAttribute("list");
-		return "list";
-	}
-	
 	@RequestMapping("/list") // 리스트화면호출
 	private String MemberLogin(Model model) throws Exception {
 
@@ -60,7 +54,7 @@ public class BoardController {
 		return "list"; // JSP 생성
 	}
 	
-	@RequestMapping("/ListPage")
+	@RequestMapping("/list?pagenum={pagenum}&contentnum={contentnum}")
 	public String ListPage(HttpServletRequest request) {
 		Paging paging = new Paging();
 		String pagenum = request.getParameter("pagenum");
@@ -79,7 +73,7 @@ public class BoardController {
 		paging.setEndpage(paging.getLastblock(), paging.getCurrentblock()); //마지막 페이지 블럭 현재 페이지 블록
 		
 		List<BoardVO> tosyoList = new ArrayList<>();
-		tosyoList = mapper.ListPage(paging.getPagenum()*10, paging.getContentnum());
+		tosyoList = mapper.listpage(paging.getPagenum()*10, paging.getContentnum());
 		
 		request.setAttribute("list", tosyoList);
 		request.setAttribute("page", paging);

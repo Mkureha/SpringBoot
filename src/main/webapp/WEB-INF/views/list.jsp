@@ -14,7 +14,7 @@ function page(idx){
 }
 </script>
 </head>
-<body>
+<body>	
 	<h2>BOOK LIST</h2>
 
 	<p>

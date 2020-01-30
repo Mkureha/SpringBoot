@@ -16,7 +16,7 @@ public interface BoardMapper {
 	//도서목록
 	public List<BoardVO> tosyoList() throws Exception;
 	//도서목록페이징
-	public List<BoardVO> ListPage(@Param("pagenum") int pagenum,@Param("contentnum") int contentnum);
+	public List<BoardVO> listpage(@Param("pagenum") int pagenum,@Param("contentnum") int contentnum);
 	//도서상세
 	public BoardVO tosyoDetail(int tosyo_number) throws Exception;
 	//도서작성
