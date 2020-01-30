@@ -40,4 +40,11 @@ public class BoardService {
 		return mBoardMapper.tosyoDelete(tosyo_number);
 	}
 
+	public List<BoardVO> listpage(int pagenum, int contentnum) {
+		return mBoardMapper.listpage(pagenum, contentnum);
+	}
+
+	public int tosyocount() {
+		return mBoardMapper.tosyocount();
+	}
 }

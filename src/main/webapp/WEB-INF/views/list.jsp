@@ -6,26 +6,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LIST</title>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 function page(idx){
-	var Pagenum = idx;
-	var Contentnum = ${"#Contentnum option:selected"}.val();
-	location.href="${pageContext.request.contextPath}/list?pagenum="+Pagenum+"&contentnum="+Contentnum;	
-}
+	var pagenum = idx;
+	var contentnum = $("#contentnum option:selected").val();
+	location.href="${pageContext.request.contextPath}/list?pagenum="+pagenum+"&contentnum="+contentnum;	
+};
 </script>
 </head>
-<body>	
+<body>
 	<h2>BOOK LIST</h2>
-
 	<p>
 		<select name="searchType" id="select_searchType">
 			<option value="tosyo_num" selected="selected">図書番号</option>
 			<option value="tosyo_name">図書名</option>
 			<option value="tosyo_daibunrui">大分類</option>
 			<option value="tosyo_cyubunrui">中分類</option>
-		</select> <input type="text" name="searchWord" id="searchWord"> <a
-			href="javascript:fn-searchlist()" class="btn">検索</a>
+		</select>
 	</p>
+	<form action="search" method="get">
+		<div>
+			<input name="keyword" type="text" placeholder="Input Keyword">
+		</div>
+		<a href="javascript:fn-searchlist()" class="btn">検索</a>
+	</form>
+
 
 	<button class="btn btn-primary" onclick="location.href='/insert'">ADD
 		BOOK</button>
@@ -34,6 +40,11 @@ function page(idx){
 	<br>
 
 	<div class="container">
+		<select name="contentnum" id="contentnumu">
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+		</select>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -46,36 +57,30 @@ function page(idx){
 			</thead>
 			<tbody>
 				<c:forEach var="tosyo" items="${list}">
-					<tr onclick="location.href='/detail/${tosyo.tosyo_number }'">
-						<td>${tosyo.tosyo_num }</td>
-						<td>${tosyo.tosyo_name }</td>
-						<td>${tosyo.tosyo_daibunrui }</td>
-						<td>${tosyo.tosyo_cyubunrui }</td>
-						<td>${tosyo.tosyo_count }</td>
+					<tr onclick="location.href='/detail/${tosyo.tosyo_number}'">
+						<td>${tosyo.tosyo_num}</td>
+						<td>${tosyo.tosyo_name}</td>
+						<td>${tosyo.tosyo_daibunrui}</td>
+						<td>${tosyo.tosyo_cyubunrui}</td>
+						<td>${tosyo.tosyo_count}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="2"><c:if test="${page.Prev }">
+					<td colspan="2"><c:if test="${page.prev}">
 							<a style="text-decoration: name;"
-								href="javascript:page(${page.getStartPage()-1 });">&laquo;</a>
-						</c:if> <c:forEach begin="${page.getStartPage() }"
-							end="${page.getEndpage() }" var="idx">
+								href="javascript:page(${page.getstartpage()-1});">&laquo;</a>
+						</c:if> <c:forEach begin="${page.getstartpage()}"
+							end="${page.getendpage()}" var="idx">
+							<a style="text-decoration: name;" href="javascript:page(${idx});">${idx}</a>
+						</c:forEach> <c:if test="${page.next}">
 							<a style="text-decoration: name;"
-								href="javascript:page(${idx });">${idx }</a>
-						</c:forEach> <c:if test="${page.Next }">
-							<a style="text-decoration: name;"
-								href="javascript:page(${page.getEndPage()+1 });">&raquo;</a>
+								href="javascript:page(${page.getendpage()+1});">&raquo;</a>
 						</c:if></td>
 				</tr>
 			</tfoot>
 		</table>
-		<select name="contentnum" id="contentnum">
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="30">30</option>
-		</select>
 	</div>
 	<%@ include file="bootstrap.jsp"%>
 </body>
