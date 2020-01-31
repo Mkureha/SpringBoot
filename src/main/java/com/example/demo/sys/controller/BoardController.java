@@ -49,6 +49,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("GS/list")
+	@PostMapping
 	public String list(HttpServletRequest request) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
