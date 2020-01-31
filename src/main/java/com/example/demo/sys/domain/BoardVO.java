@@ -167,7 +167,7 @@ public class BoardVO {
         }
         return totalpage;//페이지 개수를 리턴한다
     }
- 
+    
     public int gettotalcount() {
         return totalcount;
     }

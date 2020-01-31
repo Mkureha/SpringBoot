@@ -1,6 +1,7 @@
 package com.example.demo.sys.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -56,7 +57,7 @@ public class BoardController {
 		System.out.println(contentnum);
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
-
+	
 		BoardVO.settotalcount(mapper.tosyocount()); // 전체계수
 		BoardVO.setpagenum(cpagenum - 1); // 현재 페이지 객체 지정
 		BoardVO.setcontentnum(ccontentnum); // 한 페이지 게시글 수

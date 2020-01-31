@@ -15,16 +15,6 @@
 		location.href = "${pageContext.request.contextPath}/list?pagenum="
 				+ pagenum + "&contentnum=" + contentnum;
 	};
-
-	//Search Add
-	$(document).on('click', '#btnSearch', function(e) {
-		e.preventDefault();
-		var url = "${getBoardList}";
-		url = url + "?searchType=" + $('#searchType').val();
-		url = url + "&keyword=" + $('#keyword').val();
-		location.href = url;
-		console.log(url);
-	});
 </script>
 </head>
 <body>

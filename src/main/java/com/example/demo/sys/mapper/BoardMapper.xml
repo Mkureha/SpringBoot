@@ -18,23 +18,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT COUNT(*)
 		FROM
 		tosyo_master
-		<trim prefix="WHERE" prefixOverrides="AND|OR">
-			<if test="keyword != null and keyword != '' ">
-				<if test="searchType=='tosyo_num'">
-					AND tosyo_num like CONCAT('%', #{keyword}, '%')
-				</if>
-				<if test="searchType=='tosyo_name'">
-					AND tosyo_name like CONCAT('%', #{keyword}, '%')
-				</if>
-				<if test="searchType=='tosyo_daibunrui'">
-					AND tosyo_daibunrui like CONCAT('%', #{keyword}, '%')
-				</if>
-				<if test="searchType=='tosyo_cyubunrui'">
-					AND tosyo_cyubunrui like CONCAT('%', #{keyword}, '%')
-				</if>
-			</if>
-		</trim>
-
 	</select>
 
 	<select id="listpage"
@@ -44,24 +27,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		ORDER BY tosyo_number ASC
 		LIMIT #{pagenum},
 		#{contentnum}
-		<trim prefix="WHERE" prefixOverrides="AND|OR">
-			<if
-				test="searchType=='tosyo_num' and keyword != null and keyword != '' ">
-				AND tosyo_num like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if
-				test="searchType=='tosyo_name' and keyword != null and keyword != '' ">
-				AND tosyo_name like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if
-				test="searchType=='tosyo_daibunrui' and keyword != null and keyword != '' ">
-				AND tosyo_daibunrui like CONCAT('%', #{keyword}, '%')
-			</if>
-			<if
-				test="searchType=='tosyo_cyubunrui' and keyword != null and keyword != '' ">
-				AND tosyo_cyubunrui like CONCAT('%', #{keyword}, '%')
-			</if>
-		</trim>
 	</select>
 
 	<select id="tosyoDetail" parameterType="int"

@@ -21,5 +21,3 @@ public class Search extends BoardVO{
 		this.keyword = keyword;
 	}
 }
-
-

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container centered text-center">
-		<form class="form-signin" method="POST" action="/login"
+		<form class="form-signin" method="POST" action="list?pagenum=1&contentnum=10"
 			th:action="@{/login}">
 			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
 			<div class="container">

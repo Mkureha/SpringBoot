@@ -11,6 +11,9 @@
 
 	<h2>図書詳細ページ</h2>
 
+
+	<input type="button" value="First Page" class="btn btn-primary"
+		onclick="location.href='/list?pagenum=1&contentnum=10'">
 	<button class="btn btn-primary"
 		onclick="location.href='/update/${detail.tosyo_number }'">修正</button>
 	<button class="btn btn-danger"
@@ -38,8 +41,6 @@
 				<label>在庫有無</label>
 				<p>${detail.tosyo_count }</p>
 			</div>
-				<input type="button" value="First Page" class="btn btn-primary"
-					onclick="location.href='/list?pagenum=1&contentnum=10'">
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>
