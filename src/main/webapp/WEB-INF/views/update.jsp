@@ -33,6 +33,11 @@
 					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
 					value="${detail.tosyo_cyubunrui }">
 			</div>
+			<div class="form-group">
+				<label for="tosyo_cyubunrui">本数</label> <input type="text"
+					class="form-control" id="tosyo_count" name="tosyo_count"
+					value="${detail.tosyo_count }">
+			</div>
 			<input type="hidden" name="tosyo_number" value="${tosyo_number }"/>
 			<button type="submit" class="btn btn-primary">修正</button>
 		</form>

@@ -12,7 +12,7 @@
 		//Paging Add
 		var pagenum = idx;
 		var contentnum = 10;
-		location.href = "${pageContext.request.contextPath}/list?pagenum="
+		location.href = "${pageContext.request.contextPath}/GS/list?pagenum="
 				+ pagenum + "&contentnum=" + contentnum;
 	};
 </script>
@@ -44,11 +44,6 @@
 	<br>
 
 	<div class="container">
-		<select name="contentnum" id="contentnumu">
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="30">30</option>
-		</select>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -61,7 +56,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="tosyo" items="${list}">
-					<tr onclick="location.href='/detail/${tosyo.tosyo_number}'">
+					<tr onclick="location.href='/GS/detail/${tosyo.tosyo_number}'">
 						<td>${tosyo.tosyo_num}</td>
 						<td>${tosyo.tosyo_name}</td>
 						<td>${tosyo.tosyo_daibunrui}</td>

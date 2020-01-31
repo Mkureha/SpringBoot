@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -46,10 +45,10 @@ public class BoardController {
 
 		mBoardService.loginService(user);
 
-		return "redirect:/list";
+		return "redirect:GS/list";
 	}
 
-	@RequestMapping("/list")
+	@RequestMapping("GS/list")
 	public String list(HttpServletRequest request) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
@@ -57,7 +56,7 @@ public class BoardController {
 		System.out.println(contentnum);
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
-	
+
 		BoardVO.settotalcount(mapper.tosyocount()); // 전체계수
 		BoardVO.setpagenum(cpagenum - 1); // 현재 페이지 객체 지정
 		BoardVO.setcontentnum(ccontentnum); // 한 페이지 게시글 수
@@ -73,23 +72,23 @@ public class BoardController {
 
 		request.setAttribute("list", listpage);
 		request.setAttribute("page", BoardVO);
-		
+
 		return "list";
 	}
 
-	@RequestMapping("/detail/{tosyo_number}")
+	@RequestMapping("GS/detail/{tosyo_number}")
 	private String tosyoDetail(@PathVariable int tosyo_number, Model model) throws Exception {
-		
+
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
 		return "detail";
 	}
 
-	@RequestMapping("/insert") // 도서등록폼호출
+	@RequestMapping("GS/insert") // 도서등록폼호출
 	private String tosyoInsertForm() {
 		return "insert";
 	}
 
-	@RequestMapping("/insertProc")
+	@RequestMapping("GS/insertProc")
 	private String tosyoInsertProc(HttpServletRequest request) throws Exception {
 
 		BoardVO tosyo_master = new BoardVO();
@@ -101,10 +100,10 @@ public class BoardController {
 
 		mBoardService.tosyoInsertService(tosyo_master);
 
-		return "redirect:/list";
+		return "redirect:GS/list";
 	}
 
-	@RequestMapping("/update/{tosyo_number}") // 게시글수정폼호출
+	@RequestMapping("GS/update/{tosyo_number}") // 게시글수정폼호출
 	private String tosyoUpdateForm(@PathVariable int tosyo_number, Model model) throws Exception {
 
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
@@ -124,14 +123,14 @@ public class BoardController {
 		tosyo_master.settosyo_number(Integer.parseInt(request.getParameter("tosyo_number")));
 
 		mBoardService.tosyoUpdateService(tosyo_master);
-		return "redirect:/detail/" + request.getParameter("tosyo_number");
+		return "redirect:GS/detail/" + request.getParameter("tosyo_number");
 	}
 
-	@RequestMapping("delete/{tosyo_number}")
+	@RequestMapping("GS/delete/{tosyo_number}")
 	private String tosyoDelete(@PathVariable int tosyo_number) throws Exception {
 		mBoardService.tosyoDeleteService(tosyo_number);
 
-		return "redirect:/list";
+		return "redirect:GS/list";
 	}
 
 }

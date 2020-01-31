@@ -31,5 +31,9 @@ public class User {
 	public void setenabled(String enabled) {
 		this.enabled = enabled;
 	}
+	public static User findByUserusernameAndpassword(String getusername, String getpassword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

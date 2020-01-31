@@ -6,12 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="context-path" th:content="@{/list}" />
+<meta name="context-path" th:content="@{GS/list}" />
 <title>LIBRARY LOGIN</title>
 </head>
 <body>
 	<div class="container centered text-center">
-		<form class="form-signin" method="POST" action="list?pagenum=1&contentnum=10"
+		<form class="form-signin" method="POST" action="GS/list?pagenum=1&contentnum=10"
 			th:action="@{/login}">
 			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
 			<div class="container">
@@ -24,6 +24,7 @@
 			</div>
 			<div class="btn_area">
 			<button type="submit" class="btn btn-primary">ログイン</button>
+			<button type="reset"  class="btn btn-primary">Reset</button>
 			</div>
 			<%@ include file="bootstrap.jsp"%>
 		</form>

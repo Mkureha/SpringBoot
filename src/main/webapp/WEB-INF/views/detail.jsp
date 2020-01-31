@@ -6,18 +6,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Detail</title>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function page(idx) {
+		//Paging Add
+		var pagenum = idx;
+		var contentnum = 10;
+		location.href = "${pageContext.request.contextPath}/GS/list?pagenum="
+				+ cpagenum + "&contentnum=" + ccontentnum;
+	};
+</script>
 </head>
 <body>
 
 	<h2>図書詳細ページ</h2>
 
-
-	<input type="button" value="First Page" class="btn btn-primary"
-		onclick="location.href='/list?pagenum=1&contentnum=10'">
+	<input type="button" value="Go List First" class="btn btn-primary"
+		onclick="location.href='/GS/list?pagenum=1&contentnum=10'">
 	<button class="btn btn-primary"
-		onclick="location.href='/update/${detail.tosyo_number }'">修正</button>
+		onclick="location.href='/GS/update/${detail.tosyo_number }'">修正</button>
 	<button class="btn btn-danger"
-		onclick="location.href='/delete/${detail.tosyo_number }'">削除</button>
+		onclick="location.href='/GS/delete/${detail.tosyo_number }'">削除</button>
 
 	<div class="container">
 		<form action="/insertProc" method="post">
