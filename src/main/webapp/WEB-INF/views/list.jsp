@@ -7,21 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LIST</title>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<!-- Paging -->
 <script type="text/javascript">
 	function page(idx) {
 		//Paging Add
 		var pagenum = idx;
 		var contentnum = 10;
 		location.href = "${pageContext.request.contextPath}/GS/list?pagenum="
-				+ pagenum + "&contentnum=" + contentnum;
+				+ pagenum + "&contentnum=" + contentnum + "&searchtype=" + $('#searchtype').val() + "&keyword=" + $('#keyword').val();
 	};
+
+<!-- Search -->
+	$(document).on('click', '#btnSearch', function(e){
+		e.preventDefault();
+		var url = "${pageContext.request.contextPath}/GS/list?pagenum=1&contentnum=10";
+		url = url + "&searchtype=" + $('#searchtype').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});	
 </script>
+
 </head>
 <body>
 	<h2>BOOK LIST</h2>
 	<p>
-		<select class="form-control form-control-sm" name="searchType"
-			id="searchType">
+		<select class="form-control form-control-sm" name="searchtype"
+			id="searchtype">
 			<option value="tosyo_num" selected="selected">図書番号</option>
 			<option value="tosyo_name">図書名</option>
 			<option value="tosyo_daibunrui">大分類</option>
@@ -31,7 +43,7 @@
 	<form action="search" method="get">
 		<div>
 			<input type="text" class="form-control form-control-sm"
-				name="keyword" id="keyword" placeholder="Input Keyword">
+				name="keyword" id="keyword" placeholder="Keywordを入力してください">
 		</div>
 		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">検索</button>
 	</form>

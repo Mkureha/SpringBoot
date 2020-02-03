@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.sys.domain.BoardVO;
 import com.example.demo.sys.domain.User;
@@ -50,14 +51,21 @@ public class BoardController {
 
 	@RequestMapping("GS/list")
 	@PostMapping
-	public String list(HttpServletRequest request) {
+	public String list(HttpServletRequest request
+			,@RequestParam(required = false, defaultValue = "tosyo_num") String searchtype
+			,@RequestParam(required = false) String keyword) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
+		System.out.println(pagenum);
 		System.out.println(contentnum);
+		System.out.println(searchtype);
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
 
+		BoardVO.setsearchtype(searchtype);
+		BoardVO.setkeyword(keyword);
+		
 		BoardVO.settotalcount(mapper.tosyocount()); // 전체계수
 		BoardVO.setpagenum(cpagenum - 1); // 현재 페이지 객체 지정
 		BoardVO.setcontentnum(ccontentnum); // 한 페이지 게시글 수
@@ -69,8 +77,11 @@ public class BoardController {
 		BoardVO.setendpage(BoardVO.getlastblock(), BoardVO.getcurrentblock()); // 마지막 페이지 블럭 현재 페이지 블록
 
 		List<BoardVO> listpage = new ArrayList<BoardVO>();
-		listpage = mapper.listpage(BoardVO.getpagenum() * 10, BoardVO.getcontentnum());
+		listpage = mapper.listpage(BoardVO.getpagenum() * 10, BoardVO.getcontentnum(), BoardVO.getsearchtype(), BoardVO.getkeyword());
 
+		System.out.println("Parameter keyword : " + request.getParameter("keyword"));
+		System.out.println("Board keyword : " + BoardVO.getkeyword());
+		
 		request.setAttribute("list", listpage);
 		request.setAttribute("page", BoardVO);
 

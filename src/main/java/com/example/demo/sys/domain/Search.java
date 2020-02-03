@@ -20,4 +20,5 @@ public class Search extends BoardVO{
 	public void setkeyword(String keyword) {
 		this.keyword = keyword;
 	}
+
 }

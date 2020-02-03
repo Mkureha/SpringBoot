@@ -18,14 +18,45 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		SELECT COUNT(*)
 		FROM
 		tosyo_master
+		<if test="keyword != null and keyword != '' ">
+			<if test="searchtype.equals('tosyo_num')">
+				WHERE tosyo_num like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchtype.equals('tosyo_name')">
+				WHERE tosyo_name like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchtype.equals('tosyo_daibunrui')">
+				WHERE tosyo_daibunrui like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchtype.equals('tosyo_cyubunrui')">
+				WHERE tosyo_cyubunrui like CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
 	</select>
 
 	<select id="listpage"
 		resultType="com.example.demo.sys.domain.BoardVO">
 		SELECT *
 		FROM tosyo_master
+		<if
+			test="keyword != null and keyword != '' and searchtype.equals('tosyo_num')">
+			WHERE tosyo_num like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if
+			test="searchtype.equals('tosyo_name') and keyword != null and keyword != '' ">
+			WHERE tosyo_name like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if
+			test="searchtype.equals('tosyo_daibunrui') and keyword != null and keyword != '' ">
+			WHERE tosyo_daibunrui like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if
+			test="searchtype.equals('tosyo_cyubunrui') and keyword != null and keyword != '' ">
+			WHERE tosyo_cyubunrui like CONCAT('%', #{keyword}, '%')
+		</if>
 		ORDER BY tosyo_number ASC
-		LIMIT #{pagenum},
+		LIMIT
+		#{pagenum},
 		#{contentnum}
 	</select>
 
@@ -70,4 +101,5 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		DELETE FROM tosyo_master
 		WHERE tosyo_number = #{tosyo_number}
 	</delete>
+
 </mapper>

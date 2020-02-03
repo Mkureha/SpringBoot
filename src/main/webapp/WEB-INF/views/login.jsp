@@ -21,7 +21,7 @@
 				alert("Passwordを入力してください");
 				$("#password").focus();
 			} else {
-				$("#loginfrm").attr("action", "<c:url value='/loginProc'/>");
+				$("#loginfrm").attr("action", "<c:url value='/GS/list?pagenum=1&contentnum=10'/>");
 				$("#loginfrm").submit();
 			}
 		});

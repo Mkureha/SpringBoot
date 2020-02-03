@@ -36,8 +36,8 @@ public class BoardService {
 		return mBoardMapper.tosyoDelete(tosyo_number);
 	}
 
-	public List<BoardVO> listpage(int pagenum, int contentnum) {
-		return mBoardMapper.listpage(pagenum, contentnum);
+	public List<BoardVO> listpage(int pagenum, int contentnum, String searchtype, String keyword) {
+		return mBoardMapper.listpage(pagenum, contentnum, searchtype, keyword);
 	}
 
 	public int tosyocount() {

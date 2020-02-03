@@ -57,7 +57,7 @@ public class BoardVO {
 		this.tosyo_count = tosyo_count;
 	}
 	
-	//ADD페이징
+	//Paging ADD
 	private int totalcount;//전체 게시물 개수
     private int countlist;
     private int pagenum;//첫페이지를 표시하기 위함, 페이지 번호를 나타낸다
@@ -198,4 +198,24 @@ public class BoardVO {
     public void setcontentnum(int contentnum) {
         this.contentnum = contentnum;
     }
+    
+    //Search ADD
+    private String searchtype;
+	private String keyword;	
+			
+	public String getsearchtype() {
+		return searchtype;
+	}
+	
+	public void setsearchtype(String searchtype) {
+		this.searchtype = searchtype;
+	}
+	
+	public String getkeyword() {
+		return keyword;
+	}
+
+	public void setkeyword(String keyword) {
+		this.keyword = keyword;
+	}
 }

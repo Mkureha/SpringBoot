@@ -13,7 +13,7 @@
 		var pagenum = idx;
 		var contentnum = 10;
 		location.href = "${pageContext.request.contextPath}/GS/list?pagenum="
-				+ cpagenum + "&contentnum=" + ccontentnum;
+				+ pagenum + "&contentnum=" + contentnum;
 	};
 </script>
 </head>
@@ -23,6 +23,7 @@
 
 	<input type="button" value="Go List First" class="btn btn-primary"
 		onclick="location.href='/GS/list?pagenum=1&contentnum=10'">
+	<button type="button" id="list_btn">リストに戻る</button>
 	<button class="btn btn-primary"
 		onclick="location.href='/GS/update/${detail.tosyo_number }'">修正</button>
 	<button class="btn btn-danger"
