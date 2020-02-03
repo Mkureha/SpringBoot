@@ -27,7 +27,7 @@
 											} else {
 												$("#loginfrm")
 														.attr("action",
-																"<c:url value='/j_spring_security_check'/>");
+																"<c:url value='/loginProc'/>");
 												$("#loginfrm").submit();
 											}
 										});
@@ -37,7 +37,7 @@
 <body>
 	<div class="container centered text-center">
 		<form id="loginfrm" name="loginfrm" method="POST"
-			action="<c:url value='/j_spring_security_check'/>">
+			action="<c:url value='/loginProc'/>">
 			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
 			<div class="container">
 				<label for="username" class="sr-only">ID</label> <input type="text"
