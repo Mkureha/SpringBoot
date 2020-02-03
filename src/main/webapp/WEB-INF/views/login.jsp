@@ -12,26 +12,20 @@
 <title>LIBRARY LOGIN</title>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#loginbtn")
-								.click(
-										function() {
-											if ($("#username").val() == "") {
-												alert("IDを入力してください");
-												$("#username").focus();
-											} else if ($("#password").val() == "") {
-												alert("Passwordを入力してください");
-												$("#password").focus();
-											} else {
-												$("#loginfrm")
-														.attr("action",
-																"<c:url value='/loginProc'/>");
-												$("#loginfrm").submit();
-											}
-										});
-					});
+	$(document).ready(function() {
+		$("#loginbtn").click(function() {
+			if ($("#username").val() == "") {
+				alert("IDを入力してください");
+				$("#username").focus();
+			} else if ($("#password").val() == "") {
+				alert("Passwordを入力してください");
+				$("#password").focus();
+			} else {
+				$("#loginfrm").attr("action", "<c:url value='/loginProc'/>");
+				$("#loginfrm").submit();
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -53,15 +47,13 @@
 				<td><input type="reset" class="btn btn-primary" value="reset" />
 				</td>
 			</tr>
-			<c:if test="${not empty param.fail}">
-				<tr>
-					<td colspan="2"><font color="red">
-							<p>Your login attempt was not successful, try again</p>
-							<p>Reason:
-								${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-					</font> <c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION" />
-					</td>
-				</tr>
+			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+				<font color="red">
+					<p>
+						ログインに失敗しました <br />
+						Error Message : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+					</p> <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
+				</font>
 			</c:if>
 			<%@ include file="bootstrap.jsp"%>
 		</form>
