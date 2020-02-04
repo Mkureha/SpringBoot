@@ -6,19 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Detail</title>
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
-<!-- Search Back -->
-	$(document).ready(function(){
-		var formObj = $("form[role='form']");
-		console.log(formObj);
-			
-		$(".list_btn").on("click",function() {
-						formObj.attr("method", "get");
-						formObj.attr("action", "/GS/list");
-						formObj.submit();
-					});
-</script>
 </head>
 <body>
 	<h2>図書詳細ページ</h2>
@@ -31,8 +18,9 @@
 				value="${page.searchtype}" /> <input type="hidden" id="keyword"
 				name="keyword" value="${page.keyword}" />
 		</form>
-		<button class="btn btn-primary" type="button" id="list_btn">リストに戻る</button>
-		<button class="btn btn-primary"
+		<input type="button" value="Back" class="btn btn-primary"
+			OnClick="javascript:history.back(-1)">
+		<button class="btn btn-warning"
 			onclick="location.href='/GS/update/${detail.tosyo_number }'">修正</button>
 		<button class="btn btn-danger"
 			onclick="location.href='/GS/delete/${detail.tosyo_number }'">削除</button>

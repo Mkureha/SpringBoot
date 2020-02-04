@@ -10,7 +10,7 @@
 	<h2>書籍 作成</h2>
 
 	<div class="container">
-		<form action="/insertProc" method="post">
+		<form action="/GS/insertProc" method="post">
 			<div class="form-group">
 				<label for="tosyo_num">図書番号</label> <input type="text"
 					class="form-control" id="tosyo_num" name="tosyo_num"
@@ -33,7 +33,7 @@
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 			<input type="button" value="Back" class="btn btn-primary"
-				onclick="location.href='GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword='">
+				OnClick="javascript:history.back(-1)">
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>
