@@ -12,20 +12,27 @@
 <title>LIBRARY LOGIN</title>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#loginbtn").click(function() {
-			if ($("#username").val() == "") {
-				alert("IDを入力してください");
-				$("#username").focus();
-			} else if ($("#password").val() == "") {
-				alert("Passwordを入力してください");
-				$("#password").focus();
-			} else {
-				$("#loginfrm").attr("action", "<c:url value='/GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword='/>");
-				$("#loginfrm").submit();
-			}
-		});
-	});
+	$(document)
+			.ready(
+					function() {
+						$("#loginbtn")
+								.click(
+										function() {
+											if ($("#username").val() == "") {
+												alert("IDを入力してください");
+												$("#username").focus();
+											} else if ($("#password").val() == "") {
+												alert("Passwordを入力してください");
+												$("#password").focus();
+											} else {
+												$("#loginfrm")
+														.attr(
+																"action",
+																"<c:url value='/GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword='/>");
+												$("#loginfrm").submit();
+											}
+										});
+					});
 </script>
 </head>
 <body>
@@ -33,13 +40,15 @@
 		<form id="loginfrm" name="loginfrm" method="POST"
 			action="<c:url value='/loginProc'/>">
 			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
-			<div class="container">
+			<div class="centered">
 				<label for="username" class="sr-only">ID</label> <input type="text"
 					id="username" name="username" value="${username}"
-					class="form-control" placeholder="IDを入力してください" /> <label
-					for="password" class="sr-only">Password</label> <input
+					class="form-control" placeholder="IDを入力してください"
+					style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
+				<label for="password" class="sr-only">Password</label> <input
 					type="password" id="password" name="password" value="${password}"
-					class="form-control" placeholder="Passwordを入力してください" />
+					class="form-control" placeholder="Passwordを入力してください"
+					style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
 			</div>
 			<tr>
 				<td><input type="button" id="loginbtn" class="btn btn-primary"
@@ -50,8 +59,8 @@
 			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 				<font color="red">
 					<p>
-						ログインに失敗しました <br />
-						Error Message : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+						ログインに失敗しました <br /> Error Message :
+						${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 					</p> <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
 				</font>
 			</c:if>

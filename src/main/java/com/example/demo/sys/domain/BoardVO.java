@@ -60,7 +60,7 @@ public class BoardVO {
 	private int totalcount;//전체 게시물 개수
     private int countlist;
     private int pagenum;//첫페이지를 표시하기 위함, 페이지 번호를 나타낸다
-    private int contentnum=10;//한페이지에 몇개 보일지
+    private int contentnum;//한페이지에 몇개 보일지
     private int startpage=1;//beginpage 디폴트 1
     private int endpage=5;//endpage 디폴트 5
     private boolean prev=false;//이전 페이지 화살표
