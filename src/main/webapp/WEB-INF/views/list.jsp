@@ -55,13 +55,6 @@
 		</table>
 	</div>
 	<div>
-		<select name="contentnum" id="contentnum">
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="30">30</option>
-		</select>
-	</div>
-	<div>
 		<select class="form-control form-control-sm" name="searchtype"
 			id="searchtype" style="width: 350px;height=50px;">
 			<option value="tosyo_num">図書番号</option>
@@ -85,7 +78,7 @@
 	<!-- Paging -->
 	function page(idx) {
 		var pagenum = idx;
-		var contentnum = $("#contentnum option:selected").val();
+		var contentnum = 10;
 		var searchtype = $('#searchtype').val()
 		var keyword = $('#keyword').val()
 		var url = "${pageContext.request.contextPath}/GS/list?pagenum=" + pagenum + "&contentnum=" + contentnum;
@@ -117,11 +110,6 @@ function characterCheck() {
 var searchtype="${param.searchtype}";
 
 $("#searchtype").val(searchtype);
-
-<!-- Hold Select Option(contentnum) -->
-var contentnum="${param.contentnum}";
-
-$("#contentnum").val(contentnum);
 </script>
 	<%@ include file="bootstrap.jsp"%>
 </body>
