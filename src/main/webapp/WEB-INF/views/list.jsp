@@ -13,7 +13,7 @@
 	<p>
 		<select class="form-control form-control-sm" name="searchtype"
 			id="searchtype">
-			<option value="tosyo_num" selected="selected">図書番号</option>
+			<option value="tosyo_num">図書番号</option>
 			<option value="tosyo_name">図書名</option>
 			<option value="tosyo_daibunrui">大分類</option>
 			<option value="tosyo_cyubunrui">中分類</option>
@@ -22,7 +22,8 @@
 	<form action="search" method="get">
 		<div>
 			<input type="text" class="form-control form-control-sm"
-				name="keyword" id="keyword" placeholder="Keywordを入力してください">
+				name="keyword" id="keyword" placeholder="Keywordを入力してください"
+				value="${page.keyword}" />
 		</div>
 		<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">検索</button>
 		<button class="btn btn-primary" onclick="location.href='/insert'">ADD
@@ -70,8 +71,8 @@
 			</table>
 		</div>
 	</form>
-<!-- Paging -->
-<script type="text/javascript">
+	<!-- Paging -->
+	<script type="text/javascript">
 	function page(idx) {
 		var pagenum = idx;
 		var contentnum = 10;
@@ -92,6 +93,10 @@
 		location.href = url;
 		console.log(url);
 	});	
+<!-- Hold Select Option -->
+var searchtype="${param.searchtype}";
+
+$("#searchtype").val(searchtype);
 </script>
 	<%@ include file="bootstrap.jsp"%>
 </body>

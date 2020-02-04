@@ -53,7 +53,7 @@ public class BoardController {
 	@RequestMapping("GS/list")
 	@PostMapping
 	public String list(HttpServletRequest request
-			,@RequestParam(required = false, defaultValue = "tosyo_num") String searchtype
+			,@RequestParam(required = false) String searchtype
 			,@RequestParam(required = false) String keyword) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
