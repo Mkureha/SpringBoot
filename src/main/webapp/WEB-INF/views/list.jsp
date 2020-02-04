@@ -60,7 +60,12 @@
 			<thead>
 				<tr>
 					<th>図書番号</th>
-					<th>図書名</th>
+					<th><a
+						href="/GS/list?
+						pagenum=${page.pagenum}&
+						contentnum=${page.contentnum}&
+						searchtype=${page.searchtype}&
+						keyword=${page.keyword}">${page.tosyo_name}</a></th>
 					<th>大分類</th>
 					<th>中分類</th>
 					<th>在庫有無</th>

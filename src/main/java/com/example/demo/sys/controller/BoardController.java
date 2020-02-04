@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,7 +90,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("GS/detail/{tosyo_number}")
-	private String tosyoDetail(@PathVariable int tosyo_number, Model model) throws Exception {
+	private String tosyoDetail(@PathVariable int tosyo_number
+			, @ModelAttribute BoardVO page, Model model) throws Exception {
 
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
 		return "detail";
