@@ -8,7 +8,9 @@
 <title>Detail</title>
 </head>
 <body>
-	<h2>図書詳細ページ</h2>
+	<div class="container centered text-center">
+		<h2>図書詳細ページ</h2>
+	</div>
 	<div class="box-footer">
 		<form role="form" method="post">
 			<input type="hidden" id="pagenum" name="pagenum"
@@ -18,7 +20,7 @@
 				value="${page.searchtype}" /> <input type="hidden" id="keyword"
 				name="keyword" value="${page.keyword}" />
 		</form>
-		<input type="button" value="Back" class="btn btn-primary"
+		<input type="button" value="戻る" class="btn btn-primary"
 			OnClick="javascript:history.back(-1)">
 		<button class="btn btn-warning"
 			onclick="location.href='/GS/update/${detail.tosyo_number }'">修正</button>

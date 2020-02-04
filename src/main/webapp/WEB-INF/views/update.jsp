@@ -8,8 +8,9 @@
 <title>図書情報修正</title>
 </head>
 <body>
-
-	<h2>図書情報修正</h2>
+	<div class="container centered text-center">
+		<h2>図書情報修正</h2>
+	</div>
 
 	<div class="container">
 		<form action="/updateProc" method="post">
@@ -38,8 +39,10 @@
 					class="form-control" id="tosyo_count" name="tosyo_count"
 					value="${detail.tosyo_count }">
 			</div>
-			<input type="hidden" name="tosyo_number" value="${tosyo_number }"/>
+			<input type="hidden" name="tosyo_number" value="${tosyo_number }" />
 			<button type="submit" class="btn btn-primary">修正</button>
+			<input type="button" value="戻る" class="btn btn-primary"
+				OnClick="javascript:history.back(-1)">
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>

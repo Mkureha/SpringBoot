@@ -7,7 +7,9 @@
 <title>図書情報入力 - 簡単</title>
 </head>
 <body>
-	<h2>書籍 作成</h2>
+	<div class="container centered text-center">
+		<h2>書籍 作成</h2>
+	</div>
 
 	<div class="container">
 		<form action="/GS/insertProc" method="post">
