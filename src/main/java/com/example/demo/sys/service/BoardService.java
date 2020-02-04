@@ -40,7 +40,7 @@ public class BoardService {
 		return mBoardMapper.listpage(pagenum, contentnum, searchtype, keyword);
 	}
 
-	public int tosyocount() {
-		return mBoardMapper.tosyocount();
+	public int tosyocount(String searchtype, String keyword) {
+		return mBoardMapper.tosyocount(searchtype, keyword);
 	}
 }

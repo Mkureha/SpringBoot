@@ -67,7 +67,7 @@ public class BoardController {
 		BoardVO.setsearchtype(searchtype);
 		BoardVO.setkeyword(keyword);
 		
-		BoardVO.settotalcount(mapper.tosyocount()); // 전체계수
+		BoardVO.settotalcount(mapper.tosyocount(BoardVO.getsearchtype(), BoardVO.getkeyword())); // 전체계수
 		BoardVO.setpagenum(cpagenum - 1); // 현재 페이지 객체 지정
 		BoardVO.setcontentnum(ccontentnum); // 한 페이지 게시글 수
 		BoardVO.setcurrentblock(cpagenum); // 현재 페이지블록 번호
