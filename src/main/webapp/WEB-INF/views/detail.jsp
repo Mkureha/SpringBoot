@@ -32,16 +32,13 @@
 				name="keyword" value="${page.keyword}" />
 		</form>
 		<button class="btn btn-primary" type="button" id="list_btn">リストに戻る</button>
-
 		<button class="btn btn-primary"
 			onclick="location.href='/GS/update/${detail.tosyo_number }'">修正</button>
 		<button class="btn btn-danger"
 			onclick="location.href='/GS/delete/${detail.tosyo_number }'">削除</button>
 	</div>
-
 	<div class="container">
 		<form action="/insertProc" method="post">
-
 			<div class="form-group">
 				<label>図書番号</label>
 				<p>${detail.tosyo_num }</p>

@@ -1,6 +1,5 @@
 package com.example.demo.sys.domain;
 
-
 public class BoardVO {
 
 	private int tosyo_number;
@@ -68,8 +67,8 @@ public class BoardVO {
     private boolean next;//다음 페이지 화살표
     private int currentblock=1;
     private int lastblock;
-    
-    public boolean isprev() {
+
+	public boolean isprev() {
         return prev;
     }
  

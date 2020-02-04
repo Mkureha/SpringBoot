@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .failureUrl("/login?error")
                 .loginProcessingUrl("/loginProc")
-                .successForwardUrl("/GS/list?pagenum=1&contentnum=10")
+                .successForwardUrl("/GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword=")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
