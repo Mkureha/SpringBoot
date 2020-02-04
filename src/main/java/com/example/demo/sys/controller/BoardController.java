@@ -58,9 +58,9 @@ public class BoardController {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
-		System.out.println(pagenum);
-		System.out.println(contentnum);
-		System.out.println(searchtype);
+		System.out.println("pagenum : " + pagenum);
+		System.out.println("contentnum : " + contentnum);
+		System.out.println("searchtype : " + searchtype);
 		int cpagenum = Integer.parseInt(pagenum);
 		int ccontentnum = Integer.parseInt(contentnum);
 

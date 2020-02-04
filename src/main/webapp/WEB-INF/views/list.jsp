@@ -63,9 +63,6 @@
 			<option value="tosyo_cyubunrui">中分類</option>
 		</select>
 	</p>
-	
-	<button type="button" class="btn btn-primary" name="btnSearch" id="btnSearch">検索</button>
-	
 	<form action="search" method="get">
 		<div>
 			<input type="text" class="form-control form-control-sm"
@@ -74,6 +71,7 @@
 				onkeydown="characterCheck()" style="width:400px;height=50px;"/>
 		</div>
 	</form>
+	<button type="button" class="btn btn-primary" name="btnSearch" id="btnSearch">検索</button>
 
 	<script type="text/javascript">
 	<!-- Paging -->
