@@ -11,33 +11,43 @@
 		<h2>書籍 登録</h2>
 	</div>
 
-	<div class="container">
-		<form action="/insertProc" method="post"
-			enctype="multipart/form-data">
+	<form role="form" action="/insertProc" method="post"
+		enctype="multipart/form-data" autocomplete="off">
+		<div class="inputArea" style="margin: 10px;">
 			<div class="form-group">
-				<label for="tosyo_num">図書番号</label> <input type="text"
-					class="form-control" id="tosyo_num" name="tosyo_num"
-					placeholder="図書番号を入力してください">
+				<label for="tosyo_num" style="width: 70px; padding: 5px;">図書番号</label>
+				<input type="text" class="form-control" id="tosyo_num"
+					name="tosyo_num" placeholder="図書番号を入力してください" style="width: 250px;">
 			</div>
 			<div class="form-group">
-				<label for="tosyo_name">図書名</label> <input type="text"
-					class="form-control" id="tosyo_name" name="tosyo_name"
-					placeholder="図書名を入力してください">
+				<label for="tosyo_name" style="width: 70px; padding: 5px;">図書名</label>
+				<input type="text" class="form-control" id="tosyo_name"
+					name="tosyo_name" placeholder="図書名を入力してください" style="width: 250px;">
 			</div>
 			<div class="form-group">
-				<label for="tosyo_name">大分類</label> <input type="text"
-					class="form-control" id="tosyo_daibunrui" name="tosyo_daibunrui"
-					placeholder="大分類を入力してください">
+				<label for="tosyo_name" style="width: 70px; padding: 5px;">大分類</label>
+				<input type="text" class="form-control" id="tosyo_daibunrui"
+					name="tosyo_daibunrui" placeholder="大分類を入力してください"
+					style="width: 250px;">
 			</div>
 			<div class="form-group">
-				<label for="tosyo_name">中分類</label> <input type="text"
-					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
-					placeholder="中分類を入力してください">
+				<label for="tosyo_name" style="width: 70px; padding: 5px;">中分類</label>
+				<input type="text" class="form-control" id="tosyo_cyubunrui"
+					name="tosyo_cyubunrui" placeholder="中分類を入力してください"
+					style="width: 250px;">
+			</div>
+			<div class="inputArea">
+				<label for="tosyo_name" style="width: 70px; padding: 5px;">本数</label>
+				<input type="text" class="form-control" id="tosyo_count"
+					name="tosyo_count" placeholder="本数を入力してください" style="width: 150px;">
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 			<input type="reset" class="btn btn-primary" value="reset" />
-		</form>
-	</div>
+		</div>
+	</form>
+
+	<style>
+</style>
 	<%@ include file="bootstrap.jsp"%>
 </body>
 </html>

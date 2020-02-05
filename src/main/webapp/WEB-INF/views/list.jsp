@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,20 +20,20 @@
 	<br>
 
 	<div class="container">
-		<table class="table table-hover">
+		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>図書番号</th>
-					<th>図書名</th>
-					<th>大分類</th>
-					<th>中分類</th>
-					<th>在庫数</th>
+					<th scope="col">図書番号</th>
+					<th scope="col">図書名</th>
+					<th scope="col">大分類</th>
+					<th scope="col">中分類</th>
+					<th scope="col">在庫数</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="tosyo" items="${list}">
-					<tr onclick="location.href='/GS/detail/${tosyo.tosyo_number}'">
-						<td>${tosyo.tosyo_num}</td>
+					<tr>
+						<td scope="row"><a href="/GS/detail/${tosyo.tosyo_number}">${tosyo.tosyo_num}</a></td>
 						<td>${tosyo.tosyo_name}</td>
 						<td>${tosyo.tosyo_daibunrui}</td>
 						<td>${tosyo.tosyo_cyubunrui}</td>
@@ -42,6 +43,9 @@
 			</tbody>
 			<tfoot>
 				<tr>
+					<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<li class="page-item ">
 					<td colspan="2"><c:if test="${page.prev}">
 							<a style="text-decoration: none;"
 								href="javascript:page(${page.getstartpage()-1});">&laquo;</a>
@@ -52,6 +56,9 @@
 							<a style="text-decoration: none;"
 								href="javascript:page(${page.getendpage()+1});">&raquo;</a>
 						</c:if></td>
+					</li>
+					</ul>
+					</nav>
 				</tr>
 			</tfoot>
 		</table>
@@ -60,7 +67,7 @@
 		<div>
 			<select class="form-control form-control-sm" name="searchtype"
 				id="searchtype"
-				style="width: 350px; height :35px; margin-left: auto; margin-right: auto;">
+				style="width: 350px; height: 35px; margin-left: auto; margin-right: auto;">
 				<option value="tosyo_num">図書番号</option>
 				<option value="tosyo_name">図書名</option>
 				<option value="tosyo_daibunrui">大分類</option>
@@ -72,7 +79,7 @@
 				name="keyword" id="keyword" placeholder="Keywordを入力してください"
 				value="${page.keyword}" onkeyup="characterCheck()"
 				onkeydown="characterCheck()"
-				style="width: 400px; height :35px; margin-left: auto; margin-right: auto;" />
+				style="width: 400px; height: 35px; margin-left: auto; margin-right: auto;" />
 		</div>
 		<button type="button" class="btn btn-primary" name="btnSearch"
 			id="btnSearch">検索</button>

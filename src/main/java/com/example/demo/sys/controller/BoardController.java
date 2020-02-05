@@ -113,6 +113,8 @@ public class BoardController {
 		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));
 		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
 		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
+		tosyo_master.settosyo_count(Integer.parseInt(request.getParameter("tosyo_count")));
+		
 
 		mBoardService.tosyoInsertService(tosyo_master);
 
