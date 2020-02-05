@@ -71,9 +71,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="tosyoInsert"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		INSERT INTO tosyo_master
-		(tosyo_number,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui,tosyo_count)
+		(tosyo_number,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui,tosyo_count,tosyo_image,tosyo_thumbimg)
 		VALUES
-		(#{tosyo_number},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui},#{tosyo_count})
+		(#{tosyo_number},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui},#{tosyo_count},#{tosyo_image},#{tosyo_thumbimg})
 	</insert>
 
 	<update id="tosyoUpdate"
@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 			tosyo_num = #{tosyo_num}
 		</if>
 		<if
-			test="tosyo_num != null and tosyo_name != null and tosyo_daibunrui != null and tosyo_cyubunrui != null"> , </if>
+			test="tosyo_num != null and tosyo_name != null and tosyo_daibunrui != null and tosyo_cyubunrui != null and tosyo_count != null"> , </if>
 		<if test="tosyo_name != null">
 			tosyo_name = #{tosyo_name}
 		</if>
@@ -93,6 +93,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		</if>
 		<if test="tosyo_cyubunrui != null">
 			,tosyo_cyubunrui = #{tosyo_cyubunrui}
+		</if>
+		<if test="tosyo_count != null">
+			,tosyo_count = #{tosyo_count}
 		</if>
 		WHERE tosyo_number = #{tosyo_number}
 	</update>

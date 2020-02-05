@@ -1,5 +1,6 @@
 package com.example.demo.sys.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.demo.utils.UploadFileUtils;
 import com.example.demo.sys.domain.BoardVO;
 import com.example.demo.sys.domain.User;
 import com.example.demo.sys.mapper.BoardMapper;
@@ -27,9 +30,14 @@ public class BoardController {
 
 	@Resource(name = "com.example.demo.sys.mapper.BoardMapper")
 	BoardMapper mapper;
+	
 	@Resource(name = "com.example.demo.sys.service.BoardService")
 	BoardService mBoardService;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 
+	
 	@RequestMapping("/login") // 로그인폼호출
 	private String loginForm() {
 		return "login";
@@ -103,19 +111,22 @@ public class BoardController {
 		return "insert";
 	}
 
-	@RequestMapping("/insertProc")
-	@GetMapping
-	private String tosyoInsertProc(MultipartHttpServletRequest request) throws Exception {
-
-		BoardVO tosyo_master = new BoardVO();
-
-		tosyo_master.settosyo_num(request.getParameter("tosyo_num"));
-		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));
-		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
-		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
-		tosyo_master.settosyo_count(Integer.parseInt(request.getParameter("tosyo_count")));
+	@RequestMapping(value = "/insertProc", method = RequestMethod.POST)
+	private String tosyoInsertProc(BoardVO tosyo_master, MultipartFile file) throws Exception {
 		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
 
+		if(file != null) {
+		 fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		tosyo_master.settosyo_image(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		tosyo_master.settosyo_thumbimg(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		
 		mBoardService.tosyoInsertService(tosyo_master);
 
 		return "redirect:GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword=";
