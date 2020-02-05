@@ -12,27 +12,20 @@
 <title>LIBRARY LOGIN</title>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#loginbtn")
-								.click(
-										function() {
-											if ($("#username").val() == "") {
-												alert("IDを入力してください");
-												$("#username").focus();
-											} else if ($("#password").val() == "") {
-												alert("Passwordを入力してください");
-												$("#password").focus();
-											} else {
-												$("#loginfrm")
-														.attr(
-																"action",
-																"<c:url value='/GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword='/>");
-												$("#loginfrm").submit();
-											}
-										});
-					});
+	$(document).ready(function() {
+		$("#loginbtn").click(function() {
+			if ($("#username").val() == "") {
+				alert("IDを入力してください");
+				$("#username").focus();
+			} else if ($("#password").val() == "") {
+				alert("Passwordを入力してください");
+				$("#password").focus();
+			} else {
+				$("#loginfrm").attr("action", "<c:url value='/loginProc'/>");
+				$("#loginfrm").submit();
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -59,7 +52,7 @@
 			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
 				<font color="red">
 					<p>
-						ログインに失敗しました <br /> Error Message :
+						IDまたはPASSWORDが間違います。 <br /> Error Message :
 						${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 					</p> <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
 				</font>
