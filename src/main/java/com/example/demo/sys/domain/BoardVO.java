@@ -227,4 +227,35 @@ public class BoardVO {
 	public void setkeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
+	//Image UpLoad ADD
+	private int image_number;
+	private String image_path;
+	private String image_name;
+	
+
+	public int getimage_number() {
+		return image_number;
+	}
+
+	public void setimage_number(int image_number) {
+		this.image_number = image_number;
+	}
+
+	public String getimage_path() {
+		return image_path;
+	}
+
+	public void setimage_path(String image_path) {
+		this.image_path = image_path;
+	}
+
+	public String getimage_name() {
+		return image_name;
+	}
+
+	public void setimage_name(String image_name) {
+		this.image_name = image_name;
+	}
+	
 }

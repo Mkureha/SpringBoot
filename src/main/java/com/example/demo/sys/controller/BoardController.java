@@ -1,5 +1,6 @@
 package com.example.demo.sys.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.example.demo.sys.domain.BoardVO;
@@ -53,9 +56,8 @@ public class BoardController {
 
 	@RequestMapping("GS/list")
 	@PostMapping
-	public String list(HttpServletRequest request
-			,@RequestParam(required = false) String searchtype
-			,@RequestParam(required = false) String keyword) {
+	public String list(HttpServletRequest request, @RequestParam(required = false) String searchtype,
+			@RequestParam(required = false) String keyword) {
 		BoardVO BoardVO = new BoardVO();
 		String pagenum = request.getParameter("pagenum");
 		String contentnum = request.getParameter("contentnum");
@@ -67,7 +69,7 @@ public class BoardController {
 
 		BoardVO.setsearchtype(searchtype);
 		BoardVO.setkeyword(keyword);
-		
+
 		BoardVO.settotalcount(mapper.tosyocount(BoardVO.getsearchtype(), BoardVO.getkeyword())); // 전체계수
 		BoardVO.setpagenum(cpagenum - 1); // 현재 페이지 객체 지정
 		BoardVO.setcontentnum(ccontentnum); // 한 페이지 게시글 수
@@ -79,11 +81,12 @@ public class BoardController {
 		BoardVO.setendpage(BoardVO.getlastblock(), BoardVO.getcurrentblock()); // 마지막 페이지 블럭 현재 페이지 블록
 
 		List<BoardVO> listpage = new ArrayList<BoardVO>();
-		listpage = mapper.listpage(BoardVO.getpagenum() * 10, BoardVO.getcontentnum(), BoardVO.getsearchtype(), BoardVO.getkeyword());
+		listpage = mapper.listpage(BoardVO.getpagenum() * 10, BoardVO.getcontentnum(), BoardVO.getsearchtype(),
+				BoardVO.getkeyword());
 
 		System.out.println("Parameter keyword : " + request.getParameter("keyword"));
 		System.out.println("Board keyword : " + BoardVO.getkeyword());
-		
+
 		request.setAttribute("list", listpage);
 		request.setAttribute("page", BoardVO);
 
@@ -91,8 +94,8 @@ public class BoardController {
 	}
 
 	@RequestMapping("GS/detail/{tosyo_number}")
-	private String tosyoDetail(@PathVariable int tosyo_number
-			, @ModelAttribute BoardVO page, Model model) throws Exception {
+	private String tosyoDetail(@PathVariable int tosyo_number, @ModelAttribute BoardVO page, Model model)
+			throws Exception {
 
 		model.addAttribute("detail", mBoardService.tosyoDetailService(tosyo_number));
 		return "detail";
@@ -103,10 +106,19 @@ public class BoardController {
 		return "insert";
 	}
 
-	@RequestMapping("GS/insertProc")
+	@RequestMapping(value = "GS/insertProc", method = RequestMethod.POST)
 	private String tosyoInsertProc(MultipartHttpServletRequest request) throws Exception {
 
 		BoardVO tosyo_master = new BoardVO();
+		String fileTage = "file";
+		String filePath = "/demo/src/main/webapp/WEB-INF/image";
+		MultipartFile file = request.getFile(fileTage);
+		String fileName = file.getOriginalFilename();
+		try {
+			file.transferTo(new File(filePath + fileName));
+		} catch (Exception e) {
+			System.out.println("UpLoad Error");
+		}
 
 		tosyo_master.settosyo_num(request.getParameter("tosyo_num"));
 		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));

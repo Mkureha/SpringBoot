@@ -34,11 +34,11 @@
 					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
 					placeholder="中分類を入力してください">
 			</div>
-			<input type="file" name="file" style="margin: 10px;">
-
+			
+			<input type="file" name="file" style="margin: 10px;" >
+			
 			<button type="submit" class="btn btn-primary">登録</button>
-			<input type="button" value="Back" class="btn btn-primary"
-				OnClick="javascript:history.back(-1)">
+			<input type="reset" class="btn btn-primary" value="reset" />
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>
