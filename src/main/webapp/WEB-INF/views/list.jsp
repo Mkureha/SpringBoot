@@ -60,7 +60,7 @@
 		<div>
 			<select class="form-control form-control-sm" name="searchtype"
 				id="searchtype"
-				style="width: 350px; height =50px; margin-left: auto; margin-right: auto;">
+				style="width: 350px; height :50px; margin-left: auto; margin-right: auto;">
 				<option value="tosyo_num">図書番号</option>
 				<option value="tosyo_name">図書名</option>
 				<option value="tosyo_daibunrui">大分類</option>

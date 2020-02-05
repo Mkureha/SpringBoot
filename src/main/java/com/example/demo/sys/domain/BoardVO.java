@@ -8,6 +8,16 @@ public class BoardVO {
 	private String tosyo_daibunrui;
 	private String tosyo_cyubunrui;
 	private int tosyo_count;
+	
+	private String tosyo_image;
+	
+	public String gettosyo_image() {
+		return tosyo_image;
+	}
+
+	public void settosyo_image(String tosyo_image) {
+		this.tosyo_image = tosyo_image;
+	}
 
 	public int gettosyo_number() {
 		return tosyo_number;

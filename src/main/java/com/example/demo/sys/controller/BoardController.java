@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.example.demo.sys.domain.BoardVO;
 import com.example.demo.sys.domain.User;
@@ -103,7 +104,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("GS/insertProc")
-	private String tosyoInsertProc(HttpServletRequest request) throws Exception {
+	private String tosyoInsertProc(MultipartHttpServletRequest request) throws Exception {
 
 		BoardVO tosyo_master = new BoardVO();
 
@@ -111,6 +112,7 @@ public class BoardController {
 		tosyo_master.settosyo_name(request.getParameter("tosyo_name"));
 		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
 		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
+		tosyo_master.settosyo_image(request.getParameter("tosyo_image"));
 
 		mBoardService.tosyoInsertService(tosyo_master);
 

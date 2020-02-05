@@ -8,11 +8,12 @@
 </head>
 <body>
 	<div class="container centered text-center">
-		<h2>書籍 作成</h2>
+		<h2>書籍 登録</h2>
 	</div>
 
 	<div class="container">
-		<form action="/GS/insertProc" method="post">
+		<form action="/GS/insertProc" method="post"
+			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="tosyo_num">図書番号</label> <input type="text"
 					class="form-control" id="tosyo_num" name="tosyo_num"
@@ -33,6 +34,8 @@
 					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
 					placeholder="中分類を入力してください">
 			</div>
+			<input type="file" name="file" style="margin: 10px;">
+
 			<button type="submit" class="btn btn-primary">登録</button>
 			<input type="button" value="Back" class="btn btn-primary"
 				OnClick="javascript:history.back(-1)">

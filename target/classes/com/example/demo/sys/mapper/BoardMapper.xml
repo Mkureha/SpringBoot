@@ -71,9 +71,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<insert id="tosyoInsert"
 		parameterType="com.example.demo.sys.domain.BoardVO">
 		INSERT INTO tosyo_master
-		(tosyo_number,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui)
+		(tosyo_number,tosyo_num,tosyo_name,tosyo_daibunrui,tosyo_cyubunrui,tosyo_image)
 		VALUES
-		(#{tosyo_number},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui})
+		(#{tosyo_number},#{tosyo_num},#{tosyo_name},#{tosyo_daibunrui},#{tosyo_cyubunrui},#{tosyo_image})
 	</insert>
 
 	<update id="tosyoUpdate"
