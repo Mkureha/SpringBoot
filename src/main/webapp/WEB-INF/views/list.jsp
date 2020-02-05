@@ -60,7 +60,7 @@
 		<div>
 			<select class="form-control form-control-sm" name="searchtype"
 				id="searchtype"
-				style="width: 350px; height :50px; margin-left: auto; margin-right: auto;">
+				style="width: 350px; height :35px; margin-left: auto; margin-right: auto;">
 				<option value="tosyo_num">図書番号</option>
 				<option value="tosyo_name">図書名</option>
 				<option value="tosyo_daibunrui">大分類</option>
@@ -72,7 +72,7 @@
 				name="keyword" id="keyword" placeholder="Keywordを入力してください"
 				value="${page.keyword}" onkeyup="characterCheck()"
 				onkeydown="characterCheck()"
-				style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
+				style="width: 400px; height :35px; margin-left: auto; margin-right: auto;" />
 		</div>
 		<button type="button" class="btn btn-primary" name="btnSearch"
 			id="btnSearch">検索</button>

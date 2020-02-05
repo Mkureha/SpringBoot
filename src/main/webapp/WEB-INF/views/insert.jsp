@@ -12,7 +12,7 @@
 	</div>
 
 	<div class="container">
-		<form action="/GS/insertProc" method="post"
+		<form action="/insertProc" method="post"
 			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="tosyo_num">図書番号</label> <input type="text"
@@ -34,9 +34,6 @@
 					class="form-control" id="tosyo_cyubunrui" name="tosyo_cyubunrui"
 					placeholder="中分類を入力してください">
 			</div>
-			
-			<input type="file" name="file" style="margin: 10px;" >
-			
 			<button type="submit" class="btn btn-primary">登録</button>
 			<input type="reset" class="btn btn-primary" value="reset" />
 		</form>
