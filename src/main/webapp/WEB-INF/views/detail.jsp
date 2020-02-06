@@ -49,6 +49,11 @@
 				<label>在庫有無</label>
 				<p>${detail.tosyo_count }</p>
 			</div>
+			<div class="inputArea">
+				<label for="tosyo_image">本イメージ</label>
+				<p></p>
+				<img src="${detail.tosyo_image }" width="180px" height="auto;" />
+			</div>
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>

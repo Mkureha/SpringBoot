@@ -39,10 +39,32 @@
 					class="form-control" id="tosyo_count" name="tosyo_count"
 					value="${detail.tosyo_count }">
 			</div>
-			<input type="hidden" name="tosyo_number" value="${tosyo_number }" />
-			<button type="submit" class="btn btn-primary">修正</button>
-			<input type="button" value="戻る" class="btn btn-primary"
-				OnClick="javascript:history.back(-1)">
+			<div class="inputArea">
+				<label for="tosyo_image" style="width: 70px; padding: 5px;"
+					value="${detail.tosyo_image}"></label> <input type="file"
+					id="tosyo_image" name="file" style="width: 250px;" />
+				<div class="select_img" style="margin: 20px 0;">
+					<img src="" />
+				</div>
+
+				<script type="text/javascript">
+					$("#tosyo_image").change(
+							function() {
+								if (this.files && this.files[0]) {
+									var reader = new FileReader;
+									reader.onload = function(data) {
+										$(".select_img img").attr("src",
+												data.target.result).width(500);
+									}
+									reader.readAsDataURL(this.files[0]);
+								}
+							});
+				</script>
+				<%=request.getRealPath("/")%>
+				<input type="hidden" name="tosyo_number" value="${tosyo_number }" />
+				<button type="submit" class="btn btn-primary">修正</button>
+				<input type="button" value="戻る" class="btn btn-primary"
+					OnClick="javascript:history.back(-1)">
 		</form>
 	</div>
 	<%@ include file="bootstrap.jsp"%>

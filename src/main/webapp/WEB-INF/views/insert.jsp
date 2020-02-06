@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <title>図書情報入力 - 簡単</title>
 </head>
 <body>
@@ -50,14 +51,14 @@
 					<img src="" />
 				</div>
 
-				<script>
+				<script type="text/javascript">
 					$("#tosyo_image").change(
 							function() {
 								if (this.files && this.files[0]) {
 									var reader = new FileReader;
 									reader.onload = function(data) {
 										$(".select_img img").attr("src",
-												data.target.result).width(500);
+												data.target.result).width(180);
 									}
 									reader.readAsDataURL(this.files[0]);
 								}

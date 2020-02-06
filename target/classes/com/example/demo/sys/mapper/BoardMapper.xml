@@ -97,6 +97,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<if test="tosyo_count != null">
 			,tosyo_count = #{tosyo_count}
 		</if>
+		<if test="tosyo_image != null">
+			,tosyo_image = #{tosyo_image}
+		</if>
+		<if test="tosyo_thumbimg != null">
+			,tosyo_thumbimg = #{tosyo_thumbimg}
+		</if>
 		WHERE tosyo_number = #{tosyo_number}
 	</update>
 

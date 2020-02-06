@@ -151,6 +151,7 @@ public class BoardController {
 		tosyo_master.settosyo_daibunrui(request.getParameter("tosyo_daibunrui"));
 		tosyo_master.settosyo_cyubunrui(request.getParameter("tosyo_cyubunrui"));
 		tosyo_master.settosyo_number(Integer.parseInt(request.getParameter("tosyo_number")));
+		tosyo_master.settosyo_image(request.getParameter("tosyo_image"));
 
 		mBoardService.tosyoUpdateService(tosyo_master);
 		return "redirect:GS/detail/" + request.getParameter("tosyo_number");
