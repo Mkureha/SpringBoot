@@ -98,7 +98,7 @@ public class BoardController {
 		return "list";
 	}
 
-	@RequestMapping("GS/detail/{tosyo_number}")
+	@RequestMapping(value = "GS/detail/{tosyo_number}", method=RequestMethod.GET)
 	private String tosyoDetail(@PathVariable int tosyo_number, @ModelAttribute BoardVO page, Model model)
 			throws Exception {
 
@@ -162,7 +162,7 @@ public class BoardController {
 	private String tosyoDelete(@PathVariable int tosyo_number) throws Exception {
 		mBoardService.tosyoDeleteService(tosyo_number);
 
-		return "redirect:GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword=";
+		return "redirect:list";
 	}
 
 }
