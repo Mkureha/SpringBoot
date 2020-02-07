@@ -111,7 +111,7 @@ public class BoardController {
 		return "insert";
 	}
 
-	@RequestMapping(value = "/insertProc", method = RequestMethod.POST)
+	@RequestMapping("/insertProc")
 	private String tosyoInsertProc(BoardVO tosyo_master, MultipartFile file) throws Exception {
 		
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";

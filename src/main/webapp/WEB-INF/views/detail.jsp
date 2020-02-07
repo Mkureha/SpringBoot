@@ -21,8 +21,8 @@
 				name="keyword" value="${page.keyword}" />
 		</form>
 		<div class="inputArea">
-			<input type="button" value="戻る" class="btn btn-primary"
-				OnClick="javascript:history.back(-1)">
+			<input type="button" value="リスト" class="btn btn-primary"
+				OnClick="/GS/list?pagenum=1&contentnum=10&searchtyp=tosyo_num&keyword=">
 			<button class="btn btn-warning"
 				onclick="location.href='/GS/update/${detail.tosyo_number}'">修正</button>
 			<button class="btn btn-danger"

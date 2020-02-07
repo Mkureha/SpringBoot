@@ -29,36 +29,55 @@
 </script>
 </head>
 <body>
-	<div class="container centered text-center">
-		<form id="loginfrm" name="loginfrm" method="POST"
-			action="<c:url value='/loginProc'/>">
-			<h1 class="h3 mb-3 font-weight-normal">社内図書管理システム</h1>
-			<div class="centered">
-				<label for="username" class="sr-only">ID</label> <input type="text"
-					id="username" name="username" value="${username}"
-					class="form-control" placeholder="IDを入力してください"
-					style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
-				<label for="password" class="sr-only">Password</label> <input
-					type="password" id="password" name="password" value="${password}"
-					class="form-control" placeholder="Passwordを入力してください"
-					style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
-			</div>
-			<tr>
-				<td><input type="button" id="loginbtn" class="btn btn-primary"
-					value="login" /></td>
-				<td><input type="reset" class="btn btn-primary" value="reset" />
-				</td>
-			</tr>
-			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-				<font color="red">
-					<p>
-						IDまたはPASSWORDが間違います。 <br /> Error Message :
-						${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-					</p> <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
-				</font>
-			</c:if>
-			<%@ include file="bootstrap.jsp"%>
-		</form>
+	<div class="container">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<center>
+				<div class="jumbotron" style="padding-top: 20px;">
+					<form id="loginfrm" name="loginfrm" method="POST"
+						class="form-signin" action="<c:url value='/loginProc'/>">
+						<div class="text-center mb-4">
+							<h3 style="text-align: center;">社内図書管理システム</h3>
+						</div>
+						<div class="form-group">
+							<label for="username" class="col-sm-2 col-form-label">ID</label>
+							<div class="col-sm-10">
+								<input type="text" id="username" name="username"
+									value="${username}" class="form-control"
+									placeholder="IDを入力してください"
+									style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-sm-2 col-form-label">Password</label>
+							<div class="col-sm-10">
+								<input type="password" id="password" name="password"
+									value="${password}" class="form-control"
+									placeholder="Passwordを入力してください"
+									style="width: 400px; height =50px; margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+						<div style="margin:10px ;">
+							<tr>
+								<td><input type="button" id="loginbtn"
+									class="btn btn-primary form-controll" value="login" /></td>
+								<td><input type="reset" class="btn btn-primary"
+									value="reset" /></td>
+							</tr>
+						</div>
+						<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+							<font color="red">
+								<p>
+									IDまたはPASSWORDが間違います。 <br /> Error Message :
+									${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+								</p> <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
+							</font>
+						</c:if>
+						<%@ include file="bootstrap.jsp"%>
+					</form>
+				</div>
+			</center>
+		</div>
 	</div>
 </body>
 </html>
