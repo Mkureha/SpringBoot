@@ -162,7 +162,7 @@ public class BoardController {
 	private String tosyoDelete(@PathVariable int tosyo_number) throws Exception {
 		mBoardService.tosyoDeleteService(tosyo_number);
 
-		return "redirect:list";
+		return "redirect:GS/list?pagenum=1&contentnum=10&searchtype=tosyo_num&keyword=";
 	}
 
 }

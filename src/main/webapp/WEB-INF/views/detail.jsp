@@ -20,39 +20,42 @@
 				value="${page.searchtype}" /> <input type="hidden" id="keyword"
 				name="keyword" value="${page.keyword}" />
 		</form>
-		<input type="button" value="戻る" class="btn btn-primary"
-			OnClick="javascript:history.back(-1)">
-		<button class="btn btn-warning"
-			onclick="location.href='/GS/update/${detail.tosyo_number}'">修正</button>
-		<button class="btn btn-danger"
-			onclick="location.href='/GS/delete/${detail.tosyo_number}'">削除</button>
+		<div class="inputArea">
+			<input type="button" value="戻る" class="btn btn-primary"
+				OnClick="javascript:history.back(-1)">
+			<button class="btn btn-warning"
+				onclick="location.href='/GS/update/${detail.tosyo_number}'">修正</button>
+			<button class="btn btn-danger"
+				onclick="location.href='/GS/delete/${detail.tosyo_number}'">削除</button>
+		</div>
 	</div>
 	<div class="container">
-		<form action="/insertProc" method="GET">
-			<div class="form-group">
-				<label>図書番号</label>
-				<p>${detail.tosyo_num}</p>
+		<form action="GS/detail/${detail.tosyo_number }" method="get">
+			<div class="inputArea">
+				<label for="tosyo_num">図書番号</label>
+				<p>${detail.tosyo_num }</p>
 			</div>
-			<div class="form-group">
-				<label>図書名</label>
-				<p>${detail.tosyo_name}</p>
+			<div class="inputArea">
+				<label for="tosyo_name">図書名</label>
+				<p>${detail.tosyo_name }</p>
 			</div>
-			<div class="form-group">
-				<label>大分類</label>
-				<p>${detail.tosyo_daibunrui}</p>
+			<div class="inputArea">
+				<label for="tosyo_daibunrui">大分類</label>
+				<p>${detail.tosyo_daibunrui }</p>
 			</div>
-			<div class="form-group">
-				<label>中分類</label>
-				<p>${detail.tosyo_cyubunrui}</p>
+			<div class="inputArea">
+				<label for="tosyo_cyubunrui">中分類</label>
+				<p>${detail.tosyo_cyubunrui }</p>
 			</div>
-			<div class="form-group">
-				<label>在庫有無</label>
-				<p>${detail.tosyo_count}</p>
+			<div class="inputArea">
+				<label for="tosyo_count">在庫有無</label>
+				<p>${detail.tosyo_count }</p>
 			</div>
 			<div class="inputArea">
 				<label for="tosyo_image">本イメージ</label>
-				<p></p>
-				<img src="${detail.tosyo_image}" width="180px" height="auto;" />
+				<p>
+					<img src="${detail.tosyo_image }" width="180px" height="auto;" />
+				</p>
 			</div>
 		</form>
 	</div>

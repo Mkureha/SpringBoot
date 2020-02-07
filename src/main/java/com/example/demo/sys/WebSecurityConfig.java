@@ -9,12 +9,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
+	
+	private static final String[] RESOURCE_LOCATIONS = {
+	        "classpath:/static/"
+	        };
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -47,4 +53,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authoritiesByUsernameQuery("select username, authority from user where username = ?")
 				.passwordEncoder(new BCryptPasswordEncoder());
 	}
+	
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+        .addResourceHandler("/**")
+        .addResourceLocations(RESOURCE_LOCATIONS)
+        .setCachePeriod(3600)
+        .resourceChain(true)
+        .addResolver(new PathResourceResolver());
+    }
+	
 }
