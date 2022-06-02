@@ -18,7 +18,7 @@
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "mainClass": "com.example.demo.DemoApplication",
-            "projectName": "demo-1",
+            "projectName": "springboot",
             "args": ""
         }
     ]
