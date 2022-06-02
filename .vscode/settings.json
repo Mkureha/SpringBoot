@@ -2,12 +2,12 @@
     "sqltools.connections": [
         {
             "askForPassword": true,
-            "database": "tosyo",
+            "database": "mysql_rds",
             "dialect": "MySQL",
-            "name": "tosyo",
+            "name": "springtest",
             "port": 3306,
-            "server": "localhost",
-            "username": "root"
+            "server": "springtest.ceg8ooqjauyq.ap-northeast-1.rds.amazonaws.com",
+            "username": "admin"
         }
     ]
 }
